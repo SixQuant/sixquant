@@ -7,7 +7,8 @@ import unittest
 root = os.path.abspath(os.path.expanduser(__file__ + '/../..'))
 sys.path.append(root)
 
-from sixquant import to_date_object, to_date_str, to_date_str_short
+from sixquant import to_date_object, to_date_str, to_date_str_short, is_trading_time, is_trading_day, \
+    is_trading_day_today, is_trading_time_now
 import datetime
 
 
@@ -35,6 +36,17 @@ class TestMethods(unittest.TestCase):
         """Test :func:`to_date_str()`."""
         self.assertEqual('', to_date_str_short(None))
         self.assertEqual('20120305', to_date_str_short(to_date_object('2012-03-05')))
+
+    def test_is_trading_day(self):
+        """Test :func:`is_trading_day()`."""
+        self.assertFalse(is_trading_day('2017-10-05'))
+        self.assertTrue(is_trading_day('2017-10-09'))
+        self.assertEqual(is_trading_day(datetime.date.today()), is_trading_day_today())
+
+    def test_is_trading_time(self):
+        """Test :func:`is_trading_time()`."""
+        self.assertFalse(is_trading_time('2017-10-05 10:00:00'))
+        self.assertEqual(is_trading_time(datetime.datetime.now()), is_trading_time_now())
 
 
 if __name__ == '__main__':

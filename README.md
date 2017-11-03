@@ -1,6 +1,3 @@
-# sixquant
-
-
 # SixQuant
 
 [![PyPI Version](https://img.shields.io/pypi/v/sixquant.svg)](https://pypi.python.org/pypi/sixquant)
