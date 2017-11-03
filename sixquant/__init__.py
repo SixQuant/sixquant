@@ -15,5 +15,5 @@ from .day import *
 
 from .DailyUpdater import daily_updater
 
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 __author__ = 'caviler@gmail.com'

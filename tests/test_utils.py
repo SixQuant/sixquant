@@ -1,14 +1,17 @@
 # coding=utf-8
 
+import os
+import sys
 import unittest
-from unittest import TestCase
 
+root = os.path.abspath(os.path.expanduser(__file__ + '/../..'))
+sys.path.append(root)
+
+from sixquant import to_date_object, to_date_str, to_date_str_short
 import datetime
 
-from quick import to_date_object, to_date_str, to_date_str_short
 
-
-class UtilsTestCase(TestCase):
+class TestMethods(unittest.TestCase):
     def test_to_date_object(self):
         """Test :func:`to_date_object()`."""
         self.assertEqual(None, to_date_object(None))
