@@ -1,13 +1,7 @@
 # coding=utf-8
 
-import os
-import sys
 import unittest
-
 from sixquant import fmt_round_number, fmt_file_size
-
-root = os.path.abspath(os.path.expanduser(__file__ + '/../..'))
-sys.path.append(root)
 
 
 class TestMethods(unittest.TestCase):

@@ -7,8 +7,8 @@ import unittest
 root = os.path.abspath(os.path.expanduser(__file__ + '/../..'))
 sys.path.append(root)
 
-from sixquant import get_day_today_quote, get_day_today_money, get_day_today, get_day_today_small, \
-    get_day_today_small_no_st_no_subnew
+from sixquant import get_day_today_quote, get_day_today_money
+from sixquant import get_day_today, get_day_today_small, get_day_today_small_no_st_no_subnew
 
 
 class TestMethods(unittest.TestCase):

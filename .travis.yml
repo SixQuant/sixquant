@@ -6,11 +6,12 @@ python:
   - 3.6
 
 install:
+  - pip install coverage
   - pip install pytest
   - pip install -r requirements.txt
 
 script:
-  - py.test
+  - coverage run --source sixquant -m py.test
 
 after_success:
   - codecov
