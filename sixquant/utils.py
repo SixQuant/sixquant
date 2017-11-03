@@ -1,5 +1,5 @@
 # coding=utf-8
-import logging
+
 import time
 import datetime
 from functools import lru_cache
@@ -23,7 +23,6 @@ def request_dataframe(url, dtype=None):
     :return:
     """
     status, data = fetcher.http_get_text(url)
-    print(logging.getLogger("requests"))
     if status == 200:
         return pd.read_csv(StringIO(data), dtype=dtype)
     return None

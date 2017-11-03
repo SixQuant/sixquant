@@ -49,7 +49,7 @@ def get_stock_name(stock):
     daily_func_cache_watcher.watch_lru_cache(get_stock_name)
 
     df = get_basics()
-    rs = df.ix[stock]['name']
+    rs = df.loc[stock]['name']
 
     return rs
 
@@ -64,7 +64,7 @@ def get_stock_pe(stock):
     daily_func_cache_watcher.watch_lru_cache(get_stock_pe)
 
     df = get_basics()
-    rs = df.ix[stock]['pe']
+    rs = df.loc[stock]['pe']
 
     return rs
 
@@ -79,7 +79,7 @@ def get_stock_circulation(stock):
     daily_func_cache_watcher.watch_lru_cache(get_stock_circulation)
 
     df = get_basics()
-    rs = df.ix[stock]['circulation']
+    rs = df.loc[stock]['circulation']
 
     return rs
 
@@ -94,7 +94,7 @@ def get_stock_circulation_cap(stock):
     daily_func_cache_watcher.watch_lru_cache(get_stock_circulation_cap)
 
     df = get_basics()
-    rs = df.ix[stock]['circulation_cap']
+    rs = df.loc[stock]['circulation_cap']
 
     return rs
 
