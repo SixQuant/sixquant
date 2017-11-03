@@ -68,7 +68,7 @@ def get_day_today(fields=None,
     else:
         df = _request_day_today(TODAY_FILE, fields=fields, dropna=dropna)
         if small_only or st_only or subnew_only or no_st or no_subnew:
-            from foxquant.basic import get_stocks
+            from sixquant.basic import get_stocks
             stocks = get_stocks(small_only=small_only,
                                 st_only=st_only,
                                 subnew_only=subnew_only,
