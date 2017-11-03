@@ -7,16 +7,18 @@
 [![Powered by SixQuant](https://img.shields.io/badge/powered%20by-SixQuant-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](https://sixquant.cn)
 
 ## Overview
-A quick data source for finance data
+A quick and stable data source for finance data.
+
+提供快速稳定的金融(主要是股票)相关数据，包括实时和历史数据，数据会尽可能缓存在本地，以便提高性能同时减少服务器压力。同时，也提供了一些常用的金融辅助函数画图函数等。将来接口会全面兼容使用 RQAlpha 的 RiceQuant 和 TuShare 等常用相关库，方便用户移植代码！
 
 ## Install
 
-### Install sixquant
+#### Install sixquant
 ```bash
 $ pip3 install sixquant
 ```
 
-### Upgrade sixquant
+#### Upgrade sixquant
 ```bash
 pip install sixquant --upgrade
 ```
