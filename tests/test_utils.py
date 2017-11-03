@@ -4,9 +4,6 @@ import os
 import sys
 import unittest
 
-root = os.path.abspath(os.path.expanduser(__file__ + '/../..'))
-sys.path.append(root)
-
 from sixquant import to_date_object, to_date_str, to_date_str_short, is_trading_time, is_trading_day, \
     is_trading_day_today, is_trading_time_now
 import datetime
