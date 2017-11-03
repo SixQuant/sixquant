@@ -5,9 +5,10 @@ import logging.config
 
 class Logger(object):
     logging_conf = __file__[:len(__file__) - len('logger.py')] + 'logging.conf'
-    print(logging_conf)
+    print(logging.getLogger("requests"))
     logging.config.fileConfig(logging_conf)
     logging.getLogger("requests").setLevel(logging.WARNING)  # disable log messages from the Requests library
+    print(logging.getLogger("requests"))
 
     def __init__(self):
         self.verbose = False
