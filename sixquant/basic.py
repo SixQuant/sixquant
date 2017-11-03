@@ -141,9 +141,9 @@ def get_launch_date(stocks):
     df = df['launch_date']
 
     if isinstance(stocks, str):
-        rs = df.ix[stocks] if len(df) > 0 else None
+        rs = df.loc[stocks] if len(df) > 0 else None
     else:
-        rs = df.ix[stocks]
+        rs = df.loc[stocks]
 
     return rs
 

@@ -96,11 +96,10 @@ def get_pt_price_color(pt_price):
     return 'bcr1'
 
 
-def dataframe_to_html_file(df, filename, title, refresh=0):
+def dataframe_to_html(df, title, refresh=0):
     """
-    将 DataFrame 输出成 html 文件
+    将 DataFrame 输出成 html
     :param df:
-    :param filename:
     :param title:
     :param refresh: 是否自动刷新（秒）
     :return:
@@ -139,5 +138,18 @@ def dataframe_to_html_file(df, filename, title, refresh=0):
     html += _TABLE_FOOTER
     html += _HTML_FOOTER
 
+    return html
+
+
+def dataframe_to_html_file(df, filename, title, refresh=0):
+    """
+    将 DataFrame 输出成 html 文件
+    :param df:
+    :param filename:
+    :param title:
+    :param refresh: 是否自动刷新（秒）
+    :return:
+    """
+    html = dataframe_to_html(df=df, title=title, refresh=refresh)
     with open(filename, 'w') as html_file:
         html_file.write(html)

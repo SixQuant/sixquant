@@ -20,7 +20,7 @@ $ pip3 install sixquant
 
 #### Upgrade sixquant
 ```bash
-pip3 install sixquant --upgrade
+$ pip3 install sixquant --upgrade
 ```
 
 ## Quick Start
@@ -39,6 +39,11 @@ print(df.head())
 
 ### 基本使用
 * [SixQuant-Demo](docs/demo/SixQuant-Demo.ipynb)
+
+## Developer
+
+### 开发环境
+* [UnitTest](docs/developer/unittest.md)
 
 ## Todo
 

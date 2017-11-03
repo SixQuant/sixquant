@@ -14,6 +14,7 @@ class TestMethods(unittest.TestCase):
 
     def test_get_day_today(self):
         self.assertIsNotNone(get_day_today())
+        self.assertIsNotNone(get_day_today(fields=['open', 'close'], subnew_only=True))
         self.assertIsNotNone(get_day_today_small())
         self.assertIsNotNone(get_day_today_small_no_st_no_subnew())
 
