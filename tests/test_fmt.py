@@ -24,8 +24,7 @@ class TestMethods(unittest.TestCase):
         self.assertEqual('1P', fmt_file_size(1024 ** 5))
         self.assertEqual('45K', fmt_file_size(1024 * 45))
         self.assertEqual('2.9T', fmt_file_size(1024 ** 4 * 2.9))
-        print(123)
 
-print('abc',__name__)
+
 if __name__ == '__main__':
     unittest.main()
