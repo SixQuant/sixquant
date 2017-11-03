@@ -20,7 +20,7 @@ $ pip3 install sixquant
 
 #### Upgrade sixquant
 ```bash
-pip install sixquant --upgrade
+pip3 install sixquant --upgrade
 ```
 
 ## Quick Start
