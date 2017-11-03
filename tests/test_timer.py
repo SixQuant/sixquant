@@ -1,12 +1,6 @@
 # coding=utf-8
 
-import os
-import sys
 import unittest
-
-root = os.path.abspath(os.path.expanduser(__file__ + '/../..'))
-sys.path.append(root)
-
 from sixquant import fmt_round_number, fmt_file_size, Timer
 
 

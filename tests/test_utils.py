@@ -1,12 +1,9 @@
 # coding=utf-8
 
-import os
-import sys
 import unittest
-
+import datetime
 from sixquant import to_date_object, to_date_str, to_date_str_short, is_trading_time, is_trading_day, \
     is_trading_day_today, is_trading_time_now
-import datetime
 
 
 class TestMethods(unittest.TestCase):
