@@ -1,0 +1,15 @@
+# .coveragerc to control coverage.py
+[run]
+branch = False
+
+source =
+    sixquant
+
+omit =
+    /*/tests/*
+
+[report]
+include = sixquant/*
+
+[html]
+directory = htmlcov
