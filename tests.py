@@ -9,9 +9,5 @@ sys.path.append(root)
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()
-    for file in os.listdir('tests'):
-        if file.startswith('test_') and file.endswith('.py'):
-            file = file[:len(file) - 3]
-            suite.addTest(unittest.defaultTestLoader.loadTestsFromName(file))
-
+    suite.addTest(unittest.defaultTestLoader.discover('tests'))
     unittest.TextTestRunner().run(suite)

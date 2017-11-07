@@ -2,30 +2,14 @@
 
 import time
 import datetime
-from functools import lru_cache
-from io import StringIO
-
 import numpy as np
-import pandas as pd
+from functools import lru_cache
 
-from .constants import HOLYDAYS_FILE
-from .option import option
-from .Fetcher import fetcher
-from .DailyCache import daily_cache
-from .DailyFuncCacheWatcher import daily_func_cache_watcher
-
-
-def request_dataframe(url, dtype=None):
-    """
-    从网络中加载 DataFrame，支持压缩等，比原装的性能要好
-    :param url:
-    :param dtype:
-    :return:
-    """
-    status, data = fetcher.http_get_text(url)
-    if status == 200:
-        return pd.read_csv(StringIO(data), dtype=dtype)
-    return None
+from ..constants import HOLYDAYS_FILE
+from ..option import option
+from .daily_cache import daily_cache
+from .daily_func_cache_watcher import daily_func_cache_watcher
+from .fetcher import fetcher
 
 
 def to_date_str_fmt(date, fmt):
@@ -51,11 +35,19 @@ def to_date_str(date):
 
 
 def to_date_str_short(date):
-    """转换为日期字符串 %Y-%m-%d
+    """转换为日期字符串 %Y%m%d
     :param date:
     :return:
     """
     return to_date_str_fmt(date, '%Y%m%d')
+
+
+def to_datetime_str(dt):
+    """转换为日期字符串 %Y-%m-%d %H:%M:%S
+    :param dt:
+    :return:
+    """
+    return to_date_str_fmt(dt, '%Y-%m-%d %H:%M:%S')
 
 
 def to_date_object(date, date_only=False):
@@ -99,7 +91,7 @@ def to_date_object(date, date_only=False):
     if not isinstance(date, datetime.date):
         raise TypeError('date type error!' + str(date))
 
-    if date_only:
+    if date_only and isinstance(date, datetime.datetime):
         date = date.date()
 
     return date
@@ -109,7 +101,6 @@ def to_time_object(dt):
     """
     转换对象为日期对象
     :param dt:
-    :param date_only: 是否只保留日期部分
     :return:
     """
     if dt is None:

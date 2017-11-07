@@ -1,12 +1,12 @@
 # coding=utf-8
 
-import threading
 import time
+import threading
 
 
-class Timer(object):
+class RecycleTimer(object):
     """
-    定时回调
+    在交易时间定时回调的定时器
     """
 
     def __init__(self, interval, callback, async=False, daemon=True, async_thread_name='Timer'):
@@ -22,7 +22,6 @@ class Timer(object):
         self.async = async
         self.daemon = daemon
         self.async_thread_name = async_thread_name
-        self._thread = None
 
     def start(self, *args, **kwargs):
         """
@@ -36,7 +35,6 @@ class Timer(object):
     def _async_daemon_start(self, *args, **kwargs):
         """启动守护线程"""
         t = threading.Thread(target=self._async_daemon_run, args=args, kwargs=kwargs)
-        self._thread = t
         t.setName(self.async_thread_name)
         t.setDaemon(self.daemon)
         t.start()
@@ -65,7 +63,3 @@ class Timer(object):
             sleep_time = self.interval - (time.time() - prev_time)
             if sleep_time > 0:
                 time.sleep(sleep_time)
-
-    def stop(self):
-        if self._thread is not None:
-            pass

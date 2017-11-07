@@ -11,6 +11,9 @@ A quick and stable data source for finance data.
 
 提供快速稳定的金融(主要是股票)相关数据，包括实时和历史数据，数据会尽可能缓存在本地，以便提高性能同时减少服务器压力。同时，也提供了一些常用的金融辅助函数画图函数等。将来接口会全面兼容使用 RQAlpha 的 RiceQuant 和 TuShare 等常用相关库，方便用户移植代码！
 
+- 如果觉得本项目值得期待或有价值，感谢点这里[![GitHub stars](https://img.shields.io/github/stars/SixQuant/sixquant.svg?style=social&label=Star&maxAge=2592000)](https://github.com/SixQuant/sixquant/stargazers/)给我们加star鼓励，多谢！！！
+- 如果你有任何疑问或需求想要实现，欢迎点这里[![GitHub issues](https://img.shields.io/github/issues/SixQuant/sixquant.svg)](https://github.com/SixQuant/sixquant/issues/)提交您的需求。
+
 ## Install
 
 #### Install sixquant
@@ -40,7 +43,10 @@ print(df.head())
 ### 基本使用
 * [SixQuant-Demo](docs/demo/SixQuant-Demo.ipynb)
 
-## Developer
+### Reference
+* [Quant-Platform](docs/reference/Quant-Platform.md)
+
+## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/SixQuant/sixquant/issues)
 
 ### 开发环境
 * [UnitTest](docs/developer/unittest.md)
@@ -57,3 +63,5 @@ print(df.head())
 
 [MIT](https://tldrlegal.com/license/mit-license)
 
+## Counter
+[![HitCount](http://hits.dwyl.io/SixQuant/sixquant.svg)](http://hits.dwyl.io/SixQuant/sixquant)

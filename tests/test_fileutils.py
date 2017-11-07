@@ -1,10 +1,9 @@
 # coding=utf-8
 
+import os
 import unittest
 
-import os
-
-from sixquant.fileutils import file_size, get_temp_dir, get_temp_filename
+from sixquant.utils.file_utils import file_size, get_temp_dir, get_temp_filename
 
 
 class TestMethods(unittest.TestCase):

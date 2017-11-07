@@ -2,8 +2,10 @@
 
 import socket
 import time
+
 import requests
-from .logger import logger
+
+from sixquant.utils.logger import logger
 
 _USER_AGENTS = [
     'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6',

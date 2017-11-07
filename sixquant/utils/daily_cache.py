@@ -1,9 +1,10 @@
 # coding=utf-8
 
-import time
 import datetime
 import threading
-from .logger import logger
+import time
+
+from sixquant.utils.logger import logger
 
 
 class DailyCache(object):

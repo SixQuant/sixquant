@@ -2,7 +2,10 @@
 
 import unittest
 from sixquant import get_stocks, get_stock_name, get_stock_pe, get_stock_circulation, get_stock_circulation_cap, \
-    get_launch_date, get_stock_code, to_date_str
+    get_launch_date
+
+from sixquant import to_date_str
+from sixquant import translate_stock_code
 
 
 class TestMethods(unittest.TestCase):
@@ -32,13 +35,16 @@ class TestMethods(unittest.TestCase):
         self.assertEqual('1991-04-03', to_date_str(df.values[0]))
         self.assertEqual('1991-01-29', to_date_str(df.values[1]))
 
-    def test_get_stock_code(self):
-        self.assertEqual('000001', get_stock_code('000001'))
-        self.assertEqual('IDX.000001', get_stock_code('上证指数'))
-        self.assertEqual('IDX.399001', get_stock_code('深证成指'))
-        self.assertEqual('IDX.399006', get_stock_code('创业板指'))
-        self.assertEqual('IDX.000016', get_stock_code('上证50'))
-        self.assertEqual('IDX.000300', get_stock_code('沪深300'))
+    def test_translate_stock_code(self):
+        self.assertEqual(None, translate_stock_code(None))
+        self.assertEqual('000001', translate_stock_code('000001'))
+        self.assertEqual('IDX.000001', translate_stock_code('上证指数'))
+        self.assertEqual('IDX.399001', translate_stock_code('深证成指'))
+        self.assertEqual('IDX.399006', translate_stock_code('创业板指'))
+        self.assertEqual('IDX.000016', translate_stock_code('上证50'))
+        self.assertEqual('IDX.000300', translate_stock_code('沪深300'))
+
+        self.assertListEqual(['000001', 'IDX.000001'], translate_stock_code(['000001', '上证指数']))
 
 
 if __name__ == '__main__':

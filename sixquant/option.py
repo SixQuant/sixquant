@@ -4,12 +4,20 @@ import os
 
 
 class Option(object):
-    def __init__(self, path='./data'):
+    def __init__(self, path=None):
+        if path is None:
+            path = os.getenv("SIXQUANT_DATA_DIR")
+            if path is None or "" == path:
+                path = './data'
+
         self._data_path = path
         self.debugging = False  # 是否处于调试状态，让 is_trading_time 等函数直接返回 True
         self.verbose = False
 
-    def set_data_path(self, path='./data'):
+        self.enable_caching_day = True  # 是否缓存日线数据
+        self.enable_caching = True  # 是否缓存
+
+    def set_data_path(self, path):
         self._data_path = path
 
     def get_data_path(self):

@@ -1,11 +1,12 @@
 # coding=utf-8
 
+import os
 import unittest
 
-import os
 import pandas as pd
+
 from sixquant import dataframe_to_html_file
-from sixquant.fileutils import get_temp_filename
+from sixquant.utils.file_utils import get_temp_filename
 
 
 class TestMethods(unittest.TestCase):

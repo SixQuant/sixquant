@@ -1,15 +1,15 @@
 # coding=utf-8
 
 import datetime
-from functools import lru_cache
-
 import numpy as np
 import pandas as pd
+from functools import lru_cache
 
-from .constants import INDEXS, INDEX_NAMES, BASICS_FILE, THRESHOLD_SMALL_CAP
-from .DailyCache import daily_cache
-from .DailyFuncCacheWatcher import daily_func_cache_watcher
-from .utils import request_dataframe, month_delta
+from ..constants import INDEXS, INDEX_NAMES, BASICS_FILE, THRESHOLD_SMALL_CAP
+from ..utils.daily_cache import daily_cache
+from ..utils.daily_func_cache_watcher import daily_func_cache_watcher
+from ..utils.datetime_utils import month_delta
+from ..utils.dataframe_utils import request_dataframe
 
 """
 股票基本信息
@@ -149,15 +149,35 @@ def get_launch_date(stocks):
 
 
 @lru_cache(None)
-def get_stock_code(stock):
+def _translate_stock_code(code):
     """
     得到股票内部代码
-    名称转代码
-    :param stock:
+    名称转代码,例如 '上证50'->''
+    :param code:
     :return:
     """
     try:
-        i = INDEX_NAMES.index(stock)
+        i = INDEX_NAMES.index(code)
         return INDEXS[i]
     except ValueError:
-        return stock
+        return code
+
+
+def translate_stock_code(code_or_codes):
+    """
+    得到股票内部代码
+    名称转代码,例如 '上证50'->''
+    :param code_or_codes:
+    :return:
+    """
+    if code_or_codes is None:
+        return None
+
+    if not isinstance(code_or_codes, str):
+        rs = []
+        for code in code_or_codes:
+            rs.append(_translate_stock_code(code))
+
+        return rs
+
+    return _translate_stock_code(code_or_codes)

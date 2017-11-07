@@ -9,11 +9,12 @@ class TestMethods(unittest.TestCase):
         path = option.get_data_path()
         option.set_data_path('./xyz')
         self.assertEqual('./xyz', option.get_data_path())
-        option.set_data_path(path)
-        self.assertEqual('./data', option.get_data_path())
 
-        self.assertEqual('./data/abc', option.get_data_filename('abc'))
-        self.assertEqual('./data/abc/123.csv', option.get_data_filename('abc', '123.csv'))
+        self.assertEqual('./xyz/abc', option.get_data_filename('abc'))
+        self.assertEqual('./xyz/abc/123.csv', option.get_data_filename('abc', '123.csv'))
+
+        option.set_data_path(path)
+        self.assertEqual(path, option.get_data_path())
 
 
 if __name__ == '__main__':

@@ -2,6 +2,8 @@
 
 import time
 
+from .memory_profiler import get_used_memory_size_str
+
 """
 usage:
 with TimeProfiler("Test", True):
@@ -24,6 +26,6 @@ class TimeProfiler(object):
         self.msecs = self.secs * 1000  # millisecs
         if self.verbose:
             if self.name:
-                print('%s elapsed time: %f ms' % (self.name, self.msecs))
+                print('%s used memory %s, elapsed time: %f ms' % (self.name, get_used_memory_size_str(), self.msecs))
             else:
-                print('elapsed time: %f ms' % self.msecs)
+                print('used memory %s, elapsed time: %f ms' % (get_used_memory_size_str(), self.msecs))

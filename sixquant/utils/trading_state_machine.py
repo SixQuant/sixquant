@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from .utils import is_trading_time
+from sixquant.utils import is_trading_time
 
 
 class TradingStateMachine(object):
