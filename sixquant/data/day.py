@@ -2,6 +2,7 @@
 
 import pandas as pd
 
+from ..utils.field_name_translator import translate_field_name
 from ..utils.datetime_utils import get_delta_trade_day, get_last_histrade_day, to_date_object
 from .basic import translate_stock_code
 from .database.cached_db_day import cached_db_day
@@ -14,35 +15,73 @@ from .database.cached_db_day import cached_db_day
 def get_day(code_or_codes,
             start_date=None,
             end_date=None,
+            date=None,
             fields=None,
             adjust_type='pre'
             ):
     """
     得到股票日线数据
 
-    传入一个code，一个field，函数会返回 Pandas Series
+    Features
+    ---------
+    * 专为性能优化
+    * 支持真正历史日期的复权数据
+    * 支持字段兼容，可以使用不同的的字段名称表示同一个数据
+    *
+
+    Parameters
+    ----------
+    code_or_codes : str/str array
+        单个股票代码或股票代码数组
+    start_date : date str/date
+        数据开始日期
+    end_date : date str/date
+        数据结束日期
+    date : date str/date
+        数据日期，表示只取某一天的数据，此时忽略 start_date、end_date
+    fields : str/str array
+        单个字段名称或字段名称数组
+    adjust_type : str
+        复权类型 pre/None
+
+    Notes
+    -----
+    请尽可能的用的时候取数据，而不是一次性取
+
+    Returns
+    -------
+    传入一个code，一个field，函数会返回一列数据，格式为 Pandas Series
+    传入一个code，一个field，一个 date，函数会返回一个数据
+    传入一个code，多个field，一个 date，函数会返回一行数据，格式为 Pandas Series
     传入一个code，多个field，函数会返回 Pandas DataFrame
     传入多个code，一个field，函数会返回 Pandas DataFrame
     传入多个code，多个field，函数会返回 Pandas MultiIndex DataFrame
                                     df.loc['300315'].loc['2017-10-08':'2017-10-09']
 
-    :param code_or_codes:
-    :param start_date:
-    :param end_date:
-    :param fields:
-    :param adjust_type:
-    :return:
+    Examples
+    --------
+    df = sq.get_day('000001', date='2017-11-06', fields=['close', 'pt_price'])
+
     """
     # TODO: 应该为单只股票某个时间段数据特别优化？
     multiple_codes = not isinstance(code_or_codes, str)  # 是否同时取多个股票数据
 
-    if start_date is None:
-        start_date = get_last_histrade_day(-10)  # 默认取最近的前10个交易日
+    if date is not None:
+        start_date = end_date = date
+    else:
+        if start_date is None:
+            start_date = get_last_histrade_day(-10)  # 默认取最近的前10个交易日
+        if end_date is None:
+            end_date = get_last_histrade_day(0)  # 默认取最近的一个交易日
 
     if fields is None:
         fields = ['open', 'high', 'low', 'close', 'volume', 'amount']  # 全部字段
     elif isinstance(fields, str):
         fields = [fields]
+
+    # 字段名称兼容转换
+    original_fields = fields
+    fields, filed_name_changed = translate_field_name(fields)
 
     fetch_fields = ['code']  # 需要额外的字段
 
@@ -53,10 +92,18 @@ def get_day(code_or_codes,
         if x not in fetch_fields:
             fetch_fields.append(x)
 
+    backs = 0  # 需要前 n 个数据
+
+    if 'pt_close' in fields:
+        backs = 1
+
     # 获取原始数据 Pandas MultiIndex DataFrame(code,date)
     code_or_codes = translate_stock_code(code_or_codes)
-    df = cached_db_day.get_day(code_or_codes=code_or_codes, start_date=start_date, end_date=end_date,
-                               fields=fetch_fields)
+    df = cached_db_day.get_day(code_or_codes=code_or_codes,
+                               start_date=start_date,
+                               end_date=end_date,
+                               fields=fetch_fields,
+                               backs=backs)
 
     if len(df) > 0:
         if adjust_type == 'pre':  # 前复权
@@ -97,12 +144,21 @@ def get_day(code_or_codes,
             # df = df.copy()
             pass
 
+    # 字段名称兼容转换
+    if filed_name_changed and isinstance(df, pd.DataFrame):
+        df.rename(columns=dict(zip(fields, original_fields)), inplace=True)
+
     if not multiple_codes and len(fields) == 1:
-        # 传入一个code，一个field，函数会返回 Pandas Series
+        # 传入一个code，一个field，函数会返回一列数据，格式为 Pandas Series
         df = df.iloc[:, 0]
 
+    if not multiple_codes and date is not None:
+        # 传入一个code，多个field，一个 date，函数会返回一行数据，格式为 Pandas Series
+        # 传入一个code，一个field，一个 date，函数会返回一个数据
+        df = df.iloc[0]
+
     # 可以根据现有数据动态计算出来的字段
-    # pt_price
+    # pt_close
     # pt_ampl,
     #
     # money_major,pt_money_major,
@@ -111,7 +167,8 @@ def get_day(code_or_codes,
     # pt_money_medium,
     # pt_money_small
     #
-    #  ma5
+    # ma5
+
 
     return df
 

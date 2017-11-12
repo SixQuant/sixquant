@@ -6,10 +6,10 @@ log = sq.logger.get(__name__)
 
 # print(fq.get_concepts_list_no_black())
 
-#sq.daily_updater.update(start_date='2016-08-01')
+# sq.daily_updater.update(start_date='2016-08-01')
 
 print(sq.get_used_memory_size_str())
-df = sq.get_day('000001')
+df = sq.get_day('000001', date='2017-11-06', fields=['close', 'money'])
 print(type(df))
 print(df)
 print(sq.get_used_memory_size_str())

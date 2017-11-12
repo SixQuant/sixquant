@@ -81,16 +81,16 @@ class CachedDatabaseDay(object):
         finally:
             self._lock_release()
 
-    def get_day(self, code_or_codes, start_date, end_date, fields):
+    def get_day(self, code_or_codes, start_date, end_date, fields, backs=0):
         """
         检索日线数据
         :param code_or_codes:
-        :param start_date:
-        :param end_date:
-        :param fields:
-        :return:
+        :param start_date: 数据开始日期
+        :param end_date: 数据结束日期
+        :param fields: 包含字段
+        :param backs: 保证所有数据从结束日期往前有 n 条记录，用来计算 prev_close、MA等
+        :return: DataFrame
         """
-
         start_date = to_date_object(start_date, date_only=True)
         if start_date is None:
             raise ValueError('start_date is None!')

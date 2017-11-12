@@ -2,15 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e8216d9-63a8-49a1-bf38-f7d1bf5a7e44" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/profile-memory-leak-graph.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/profile_memory_leak.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/developer/architecture.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/reference/Quant-Platform.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sixquant/data/database/cached_db_day.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sixquant/data/database/db.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sixquant/data/day.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sixquant/profiler/memory_profiler.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sixquant/utils/datetime_utils.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sixquant/utils/dataframe_utils.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/data/test_day.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sixquant/data/da/DailyUpdater.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sixquant/day.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/sixquant/db.py" afterPath="" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/DailyCache.py" afterPath="$PROJECT_DIR$/sixquant/utils/daily_cache.py" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/DailyFuncCacheWatcher.py" afterPath="$PROJECT_DIR$/sixquant/utils/daily_func_cache_watcher.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/DailyUpdater.py" afterPath="$PROJECT_DIR$/sixquant/data/updater/daily_updater.py" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/Fetcher.py" afterPath="$PROJECT_DIR$/sixquant/utils/fetcher.py" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/RecycleTimer.py" afterPath="$PROJECT_DIR$/sixquant/utils/trading_timer.py" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/StoppableThread.py" afterPath="$PROJECT_DIR$/sixquant/utils/stoppable_thread.py" />
@@ -20,12 +27,11 @@
       <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/basic.py" afterPath="$PROJECT_DIR$/sixquant/data/basic.py" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/concept.py" afterPath="$PROJECT_DIR$/sixquant/data/concept.py" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/dataframe_to_html.py" afterPath="$PROJECT_DIR$/sixquant/utils/dataframe_to_html.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/day.py" afterPath="$PROJECT_DIR$/sixquant/data/day.py" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/fileutils.py" afterPath="$PROJECT_DIR$/sixquant/utils/file_utils.py" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/fmt.py" afterPath="$PROJECT_DIR$/sixquant/utils/fmt.py" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/logger.py" afterPath="$PROJECT_DIR$/sixquant/utils/logger.py" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/today.py" afterPath="$PROJECT_DIR$/sixquant/data/day_today.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/utils.py" afterPath="$PROJECT_DIR$/sixquant/utils/dataframe_utils.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/sixquant/utils.py" afterPath="$PROJECT_DIR$/sixquant/utils/datetime_utils.py" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/tests/test_basic.py" afterPath="$PROJECT_DIR$/tests/data/test_basic.py" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/tests/test_concept.py" afterPath="$PROJECT_DIR$/tests/data/test_concept.py" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/tests/test_today.py" afterPath="$PROJECT_DIR$/tests/data/test_today.py" />
@@ -304,6 +310,13 @@
               <item name="sixquant" type="462c0819:PsiDirectoryNode" />
               <item name="sixquant" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sixquant" type="462c0819:PsiDirectoryNode" />
+              <item name="sixquant" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="updater" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
