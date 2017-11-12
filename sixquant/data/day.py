@@ -2,6 +2,8 @@
 
 import pandas as pd
 
+from ..utils.exceptions import IllegalArgumentError
+from ..utils.ds_utils import append_if_not_exists
 from ..utils.field_name_translator import translate_field_name
 from ..utils.datetime_utils import get_delta_trade_day, get_last_histrade_day, to_date_object
 from .basic import translate_stock_code
@@ -16,6 +18,7 @@ def get_day(code_or_codes,
             start_date=None,
             end_date=None,
             date=None,
+            backs=0,
             fields=None,
             adjust_type='pre'
             ):
@@ -35,10 +38,16 @@ def get_day(code_or_codes,
         单个股票代码或股票代码数组
     start_date : date str/date
         数据开始日期
+        start_date 和 backs 同时出现时忽略 start_date 参数
     end_date : date str/date
         数据结束日期
     date : date str/date
-        数据日期，表示只取某一天的数据，此时忽略 start_date、end_date
+        等价于 end_date
+        一般表示只取某一天的数据
+        和 backs 参数配套使用时表示取某一天以及前 backs 个数据
+    backs : int
+        保证所有数据从结束日期往前有 n 条记录，以便用来画图等
+        start_date 和 backs 同时出现时忽略 start_date 参数
     fields : str/str array
         单个字段名称或字段名称数组
     adjust_type : str
@@ -50,52 +59,130 @@ def get_day(code_or_codes,
 
     Returns
     -------
-    传入一个code，一个field，函数会返回一列数据，格式为 Pandas Series
-    传入一个code，一个field，一个 date，函数会返回一个数据
-    传入一个code，多个field，一个 date，函数会返回一行数据，格式为 Pandas Series
-    传入一个code，多个field，函数会返回 Pandas DataFrame
-    传入多个code，一个field，函数会返回 Pandas DataFrame
-    传入多个code，多个field，函数会返回 Pandas MultiIndex DataFrame
-                                    df.loc['300315'].loc['2017-10-08':'2017-10-09']
+    # 1. 传入一个code、单日date、一个field，返回一个数据，数据类型为 np.float64
+    data = sq.get_day('000001', date='2017-11-01', fields='close')
+    self.assertTrue(isinstance(data, np.float64))
+    self.assertEqual(11.4, data)
+
+    # 2. 传入一个code、单日date、多个field，返回一行数据，数据类型为 Pandas Series
+    data = sq.get_day('000001', date='2017-11-01', fields=['open', 'close'])
+    self.assertTrue(isinstance(data, pd.Series))
+    self.assertEqual(2, len(data))
+    self.assertEqual({'open': 11.56, 'close': 11.4}, data.to_dict())
+
+    # 3. 传入一个code、多日date、一个field，返回一列数据，数据类型为 Pandas Series
+    data = sq.get_day('000001', start_date='2017-11-01', end_date='2017-11-02', fields='close')
+    self.assertTrue(isinstance(data, pd.Series))
+    self.assertEqual(2, len(data))
+    self.assertEqual(['2017-11-01', '2017-11-02'], data.index.strftime('%Y-%m-%d').tolist())
+    self.assertEqual([11.4, 11.54], data.values.tolist())
+
+    # 4. 传入一个code、多日date、多个field，返回一列数据，数据类型为 Pandas DataFrame
+    data = sq.get_day('000001', start_date='2017-11-01', end_date='2017-11-02', fields=['open', 'close'])
+    self.assertTrue(isinstance(data, pd.DataFrame))
+    self.assertEqual(2, len(data))
+    self.assertEqual(['2017-11-01', '2017-11-02'], data.index.strftime('%Y-%m-%d').tolist())
+    self.assertEqual([[11.56, 11.4], [11.36, 11.54]], data.values.tolist())
+
+    # --------
+
+    # 5. 传入多个code、单日date、一个field，返回一列数据，数据类型为 Pandas Series
+    data = sq.get_day(['000001', '000002'], date='2017-11-01', fields='close')
+    self.assertTrue(isinstance(data, pd.Series))
+    self.assertEqual(2, len(data))
+    self.assertEqual({'000001': 11.4, '000002': 29.15}, data.to_dict())
+
+    # 6. 传入多个code、单日date、多个field，返回多行数据，数据类型为 Pandas DataFrame
+    data = sq.get_day(['000001', '000002'], date='2017-11-01', fields=['open', 'close'])
+    self.assertTrue(isinstance(data, pd.DataFrame))
+    self.assertEqual(2, len(data))
+    self.assertEqual(['000001', '000002'], data.index.tolist())
+    self.assertEqual([[11.56, 11.4], [28.96, 29.15]], data.values.tolist())
+
+    # 7. 传入多个code、多日date、一个field，返回多行数据，数据类型为 Pandas DataFrame
+    data = sq.get_day(['000001', '000002'], start_date='2017-11-01', end_date='2017-11-02', fields='close')
+    self.assertTrue(isinstance(data, pd.DataFrame))
+    self.assertEqual(4, len(data))
+    self.assertEqual(['2017-11-01', '2017-11-01', '2017-11-02', '2017-11-02'],
+                     data.index.strftime('%Y-%m-%d').tolist())
+    self.assertEqual([['000001', 11.4], ['000002', 29.15], ['000001', 11.54], ['000002', 29.45]],
+                     data.values.tolist())
+
+    # 8. 传入多个code、多日date、多个field，返回多行数据，数据类型为 Pandas DataFrame
+    data = sq.get_day(['000001', '000002'], start_date='2017-11-01', end_date='2017-11-02',
+                      fields=['open', 'close'])
+    self.assertTrue(isinstance(data, pd.DataFrame))
+    self.assertEqual(4, len(data))
+    self.assertEqual(['2017-11-01', '2017-11-01', '2017-11-02', '2017-11-02'],
+                     data.index.strftime('%Y-%m-%d').tolist())
+    self.assertEqual([['000001', 11.56, 11.4],
+                      ['000002', 28.96, 29.15],
+                      ['000001', 11.36, 11.54],
+                      ['000002', 29.3, 29.45]], data.values.tolist())
+
+    # --------
+
+    # 因为有可能股票个数是动态变化的，希望处理结果时统一处理
+    # 因此 '000001' 和 ['000001'] 是不同的，前者表示单个股票，后者表示多个股票
+
+    # 5. 传入多个code、单日date、一个field，返回一列数据，数据类型为 Pandas Series
+    data = sq.get_day(['000001'], date='2017-11-01', fields='close')
+    self.assertTrue(isinstance(data, pd.Series))
+    self.assertEqual(1, len(data))
+    self.assertEqual({'000001': 11.4}, data.to_dict())
 
     Examples
     --------
     df = sq.get_day('000001', date='2017-11-06', fields=['close', 'pt_price'])
 
     """
-    # TODO: 应该为单只股票某个时间段数据特别优化？
-    multiple_codes = not isinstance(code_or_codes, str)  # 是否同时取多个股票数据
+    # 参数检查
+    if date is not None and end_date is not None:
+        raise IllegalArgumentError('either end_date or date, not both!')
 
+    # date 等价于 end_date
     if date is not None:
-        start_date = end_date = date
+        end_date = date
+
+    # 缺省参数处理
+    if end_date is None:
+        end_date = get_last_histrade_day(0)  # 默认取最后一个交易日
+    else:
+        end_date = to_date_object(end_date, date_only=True)
+
+    if backs > 0:  # start_date 和 backs 同时出现时忽略 start_date 参数
+        start_date = None
     else:
         if start_date is None:
-            start_date = get_last_histrade_day(-10)  # 默认取最近的前10个交易日
-        if end_date is None:
-            end_date = get_last_histrade_day(0)  # 默认取最近的一个交易日
+            start_date = end_date  # 默认取1个交易日
+        else:
+            start_date = to_date_object(start_date, date_only=True)
 
     if fields is None:
         fields = ['open', 'high', 'low', 'close', 'volume', 'amount']  # 全部字段
     elif isinstance(fields, str):
         fields = [fields]
 
+    multiple_codes = not isinstance(code_or_codes, str)  # 是否同时取多个股票数据
+    single_date = backs == 0 and (start_date is None or start_date == end_date)  # 是否单日数据
+    single_fields = len(fields) == 1  # 是否单个字段数据
+
+    if multiple_codes:
+        fields = append_if_not_exists(['code'], fields)
+
     # 字段名称兼容转换
     original_fields = fields
     fields, filed_name_changed = translate_field_name(fields)
 
-    fetch_fields = ['code']  # 需要额外的字段
+    fetch_fields = []  # 实际获取的数据字段
 
     if adjust_type == 'pre':
-        fetch_fields.append('factor')  # 需要额外的字段用于计算
+        fetch_fields.append('factor')  # 需要额外的字段用于计算复权
 
-    for x in fields:  # 合并上用户真正想要的字段
-        if x not in fetch_fields:
-            fetch_fields.append(x)
-
-    backs = 0  # 需要前 n 个数据
+    fetch_fields = append_if_not_exists(fetch_fields, fields)
 
     if 'pt_close' in fields:
-        backs = 1
+        backs = 1 if backs < 1 else backs  # 需要前一天的数据
 
     # 获取原始数据 Pandas MultiIndex DataFrame(code,date)
     code_or_codes = translate_stock_code(code_or_codes)
@@ -114,7 +201,7 @@ def get_day(code_or_codes,
             # 因为复权会修改数据，因此需要复制数据
             df_copy = df[['factor']].copy()  # 做一个新的 DataFrame 出来并且保留Index
 
-            if multiple_codes:
+            if multiple_codes and isinstance(factor, pd.Series):
                 # 同时处理多只股票数据，需要制作并使用 factor 因子 DataFrame
                 step = len(factor)
                 step_max = len(df_copy) - step
@@ -139,6 +226,8 @@ def get_day(code_or_codes,
                 else:
                     df_copy[label] = df[label]  # 其他字段直接复制
             df = df_copy.drop('factor', axis=1)  # 对外隐藏 factor 列
+            del df_copy
+            del factor
         else:  # 不复权
             # 为了防止外面修改原始DataFrame数据，统一复制一次?
             # df = df.copy()
@@ -148,14 +237,22 @@ def get_day(code_or_codes,
     if filed_name_changed and isinstance(df, pd.DataFrame):
         df.rename(columns=dict(zip(fields, original_fields)), inplace=True)
 
-    if not multiple_codes and len(fields) == 1:
-        # 传入一个code，一个field，函数会返回一列数据，格式为 Pandas Series
-        df = df.iloc[:, 0]
+    if not multiple_codes:  # 传入一个code
+        if single_fields:
+            # 一个field，取出一列数据，格式为 Pandas Series
+            df = df.iloc[:, 0]
 
-    if not multiple_codes and date is not None:
-        # 传入一个code，多个field，一个 date，函数会返回一行数据，格式为 Pandas Series
-        # 传入一个code，一个field，一个 date，函数会返回一个数据
-        df = df.iloc[0]
+        if single_date:
+            # 单日date，取出一行数据，如果已经是 Series 则取出一个数据
+            df = df.iloc[0]
+    else:  # 传入多个code
+        if single_date:
+            # 单日date，去掉日期列，把 code 列变成 index
+            df.set_index('code', inplace=True)
+
+            if single_fields:
+                # 一个field，取出一列数据，格式为 Pandas Series
+                df = df.iloc[:, 0]
 
     # 可以根据现有数据动态计算出来的字段
     # pt_close
@@ -168,7 +265,6 @@ def get_day(code_or_codes,
     # pt_money_small
     #
     # ma5
-
 
     return df
 

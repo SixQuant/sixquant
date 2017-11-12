@@ -1,11 +1,10 @@
 # coding=utf-8
+
 import datetime
-
-import pandas as pd
-
-from sixquant import option
+from ...option import option
+from ...utils.exceptions import IllegalArgumentError
+from ...utils.datetime_utils import get_delta_trade_day
 from .db import db
-from ...utils.datetime_utils import to_date_object
 
 
 class CachedDatabaseDay(object):
@@ -81,24 +80,42 @@ class CachedDatabaseDay(object):
         finally:
             self._lock_release()
 
-    def get_day(self, code_or_codes, start_date, end_date, fields, backs=0):
+    def get_day(self, code_or_codes, start_date, end_date, backs, fields):
         """
-        检索日线数据
-        :param code_or_codes:
-        :param start_date: 数据开始日期
-        :param end_date: 数据结束日期
-        :param fields: 包含字段
-        :param backs: 保证所有数据从结束日期往前有 n 条记录，用来计算 prev_close、MA等
-        :return: DataFrame
+        得到股票日线数据
+
+        Parameters
+        ----------
+        code_or_codes : str/str array
+            单个股票代码或股票代码数组
+        start_date : date str/date
+            数据开始日期
+            start_date 和 backs 同时出现时忽略 start_date 参数
+        end_date : date str/date
+            数据结束日期
+            和 backs 参数配套使用时表示取某一天以及前 backs 个数据
+        backs : int
+            保证所有数据从结束日期往前有 n 条记录，以便用来画图等
+            start_date 和 backs 同时出现时忽略 start_date 参数
+        fields : str/str array
+            单个字段名称或字段名称数组
+
+        Notes
+        -----
+        请尽可能的用的时候取数据，而不是一次性取
+
+        Returns
+        -------
+        Pandas DataFrame
         """
-        start_date = to_date_object(start_date, date_only=True)
-        if start_date is None:
-            raise ValueError('start_date is None!')
+        if start_date is None and backs < 1:
+            raise IllegalArgumentError('either start_date or backs must be defined!')
 
         if end_date is None:
-            end_date = datetime.date.today()
-        else:
-            end_date = to_date_object(end_date, date_only=True)
+            raise IllegalArgumentError('end_date is None!')
+
+        if backs > 0 and start_date is None:
+            start_date = get_delta_trade_day(end_date, -backs)  # 一般情况下(不包括停牌的数据)直接往前取 backs 个交易日的数据
 
         # 获取数据，已经按照日期排序
         df = self._prepare(start_date=start_date, end_date=end_date, fields=fields)
@@ -121,6 +138,13 @@ class CachedDatabaseDay(object):
                     df = df.loc[df.code == code_or_codes]
                 else:
                     df = df.loc[df.code.isin(code_or_codes)]
+
+            if backs > 0:
+                # 检查数据是否满足要求
+                print(df)
+                import pandas as pd
+                d = pd.DataFrame()
+                #print(d.groupby('code').count())
 
         return df
 

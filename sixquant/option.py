@@ -10,6 +10,8 @@ class Option(object):
             if path is None or "" == path:
                 path = './data'
 
+        self.env = 'development' if os.path.exists('../../sixquant.egg-info') else 'product'
+
         self._data_path = path
         self.debugging = False  # 是否处于调试状态，让 is_trading_time 等函数直接返回 True
         self.verbose = False
@@ -37,6 +39,10 @@ class Option(object):
             return path + os.sep + filename
         else:
             return path + os.sep + subdir + os.sep + filename
+
+    def is_development_env(self):
+        """当前是否处于开发环境"""
+        return self.env == 'development'
 
 
 option = Option()
