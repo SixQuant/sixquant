@@ -4,7 +4,7 @@ import datetime
 import threading
 import time
 
-from sixquant.utils.logger import logger
+from .logger import logger
 
 
 class DailyCache(object):
@@ -50,11 +50,11 @@ class DailyCache(object):
 
     def reset(self):
         """
-        清理函数缓存
+        清理日化数据缓存
         :return:
         """
         log = logger.get(__name__)
-        log.debug('daily reset cache.')
+        log.debug('reset daily data cache.')
 
         self._dict = {}
         self._today_key = int(time.time() * 100)

@@ -245,7 +245,7 @@ class Database(object):
         else:
             params = None
 
-        #sql += ' ORDER BY date'
+        # sql += ' ORDER BY date'
 
         df = pd.read_sql_query(sql, self.con, params=params)
         df.date = pd.to_datetime(df.date)
@@ -256,6 +256,31 @@ class Database(object):
         df.index.name = None
 
         # TODO 测试一下 df.sort_index 后性能是否有所提升
+        df.sort_index(axis=0, ascending=True, inplace=True)  # 按照日期从小到大排列，与米宽等一致
+
+        return df
+
+    def get_day_backs(self, code, date, backs, fields):
+        """
+        从数据库中临时获取 date 日往前 backs 个数据
+        :param code:
+        :param date:
+        :param backs:
+        :param fields:
+        :return: df
+        """
+        if self.con is None:
+            self.initialize()
+
+        sql = 'SELECT date,' + (','.join(fields)) + ' FROM day WHERE date<=? and code=? ORDER BY date DESC LIMIT ?'
+        params = (to_date_str(date), code, backs + 1,)
+
+        df = pd.read_sql_query(sql, self.con, params=params)
+        df.date = pd.to_datetime(df.date)
+
+        df.set_index('date', inplace=True)
+        df.index.name = None
+
         df.sort_index(axis=0, ascending=True, inplace=True)  # 按照日期从小到大排列，与米宽等一致
 
         return df

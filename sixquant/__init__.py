@@ -12,6 +12,7 @@ from .profiler.time_profiler import *
 from .profiler.memory_profiler import *
 
 from .option import option
+from .cache import cache
 
 from .data.basic import *
 from .data.concept import *

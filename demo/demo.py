@@ -1,4 +1,5 @@
 # coding=utf-8
+import datetime
 
 import sixquant as sq
 import pandas as pd
@@ -11,9 +12,40 @@ log = sq.logger.get(__name__)
 
 print(sq.get_used_memory_size_str())
 
-df = sq.get_day('000001', date='2017-11-06', backs=1, fields=['open', 'close'])
+"""
+stocks = sq.get_stocks()
+stocks = ['600469']
+df = sq.get_day(stocks, start_date='2017-09-01', end_date='2017-11-06', fields=['open', 'close'])
+# 寻找中间停牌了一天的数据
+for code in stocks:
+    df2 = df.loc[df.code == code]  # 先按照股票代码过滤剩下该股票的所有数据
+    dates = df2.index.strftime('%Y-%m-%d').tolist()
+    print(df)
+    if len(dates) > 0:
+        date1 = sq.to_date_object(min(dates))
+        date2 = sq.to_date_object(max(dates))
+        date = date1
+        i = 0
+        while date <= date2:
+            print(code, date, dates[i])
+            if not sq.is_same_day(date, dates[i]):
+                if sq.is_same_day(sq.get_next_trade_day(date), dates[i]):
+                    print(code, date, dates[i])
+                break
+
+            date = sq.get_next_trade_day(date)
+            i += 1
+"""
+
+# df = sq.get_day('000001', date='2017-11-06', backs=1, fields=['open', 'close'])
+# df = sq.get_day(['000001', '000002'], date='2017-11-06', backs=1, fields=['open', 'close'])
+
 # df = sq.get_day(['000001'], date='2017-11-06', fields='close')
 # df = sq.get_day(['000001', '000002'], date='2017-11-06', backs=1, fields=['open', 'close'])
+#df = sq.get_day('000001', start_date='2017-10-27', end_date='2017-11-04', fields=['open', 'close'])
+# df = sq.get_day(['000001', '002880', '300680'], date='2017-09-04', backs=2, fields='close')
+sq.cache.reset_day_cache()
+df = sq.get_day(['000001', '600469'], date='2017-11-01', backs=2, fields='close')
 
 print(type(df))
 print(df)

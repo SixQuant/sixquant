@@ -2,6 +2,7 @@
 
 import pandas as pd
 
+from ..utils.factor_utils import get_relevant_factor
 from ..utils.exceptions import IllegalArgumentError
 from ..utils.ds_utils import append_if_not_exists
 from ..utils.field_name_translator import translate_field_name
@@ -19,6 +20,7 @@ def get_day(code_or_codes,
             end_date=None,
             date=None,
             backs=0,
+            drop_suspended=False,
             fields=None,
             adjust_type='pre'
             ):
@@ -48,6 +50,9 @@ def get_day(code_or_codes,
     backs : int
         保证所有数据从结束日期往前有 n 条记录，以便用来画图等
         start_date 和 backs 同时出现时忽略 start_date 参数
+    drop_suspended : bool
+        是否直接丢弃中间有停牌的数据
+        和 backs 配套使用
     fields : str/str array
         单个字段名称或字段名称数组
     adjust_type : str
@@ -189,36 +194,28 @@ def get_day(code_or_codes,
     df = cached_db_day.get_day(code_or_codes=code_or_codes,
                                start_date=start_date,
                                end_date=end_date,
-                               fields=fetch_fields,
-                               backs=backs)
+                               backs=backs,
+                               drop_suspended=drop_suspended,
+                               fields=fetch_fields
+                               )
 
     if len(df) > 0:
         if adjust_type == 'pre':  # 前复权
             # 除权处理
             # 利用收盘价计算最后一天的复权系数
-            factor = df.loc[df.index.max()]['factor']
 
             # 因为复权会修改数据，因此需要复制数据
             df_copy = df[['factor']].copy()  # 做一个新的 DataFrame 出来并且保留Index
 
-            if multiple_codes and isinstance(factor, pd.Series):
-                # 同时处理多只股票数据，需要制作并使用 factor 因子 DataFrame
-                step = len(factor)
-                step_max = len(df_copy) - step
-                step_i = 0
-                while step_i < step_max:
-                    df_copy.iloc[step_i:step_i + step, 0] = factor.values
-                    step_i += step
-
-                factor = df_copy['factor']
+            if multiple_codes:
+                factor = get_relevant_factor(df[['code', 'factor']])
+            else:
+                factor = get_relevant_factor(df['factor'])
 
             columns = fields
             for label in columns:
                 if label in ['open', 'high', 'low', 'close']:
                     # 利用复权系数调整所有价格相关数据
-                    # print(df[label])
-                    # print(factor)
-                    # print(df[label] / factor)
                     df_copy[label] = df[label] / factor  # 除权
 
                     # 保留两位小数，需不需要四舍五入？

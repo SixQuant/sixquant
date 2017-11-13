@@ -103,11 +103,63 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(['2017-11-01', '2017-11-02'], data.index.strftime('%Y-%m-%d').tolist())
         self.assertEqual([['000001', 11.56, 11.4], ['000001', 11.36, 11.54]], data.values.tolist())
 
+    def test_get_day_backs(self):
+        # 1. 数据缓存，中间有停牌数据直接丢弃
+        # '000001' 2017-10-30 2017-10-31 2017-11-01
+        # '600469' 2017-10-27 2017-10-30 2017-11-01 中间有停牌，丢弃
+        data = sq.get_day(['000001', '600469'], date='2017-11-01', backs=2, drop_suspended=True, fields='close')
+        self.assertTrue(isinstance(data, pd.DataFrame))
+        self.assertEqual(3, len(data))
+        self.assertEqual(['2017-10-30', '2017-10-31', '2017-11-01'], data.index.strftime('%Y-%m-%d').tolist())
+        self.assertEqual([['000001', 11.56], ['000001', 11.54], ['000001', 11.4]], data.values.tolist())
+
+        # '000001' 2017-10-30 2017-10-31 2017-11-01
+        # '600469' 2017-10-29 2017-10-30 2017-11-01 中间有停牌，需要从补足
+
+        # 2. 数据缓存，补足数据从缓存中获取
+        sq.cache.reset_day_cache()
+        sq.get_day(['000001'], start_date='2017-10-27', end_date='2017-11-01', fields='close')
+
+        data = sq.get_day(['000001', '600469'], date='2017-11-01', backs=2, fields='close')
+        self.assertTrue(isinstance(data, pd.DataFrame))
+        self.assertEqual(6, len(data))
+        self.assertEqual(['2017-10-30',
+                          '2017-10-31',
+                          '2017-11-01',
+                          '2017-10-27',
+                          '2017-10-30',
+                          '2017-11-01'], data.index.strftime('%Y-%m-%d').tolist())
+        self.assertEqual([['000001', 11.56],
+                          ['000001', 11.54],
+                          ['000001', 11.4],
+                          ['600469', 8.11],
+                          ['600469', 7.98],
+                          ['600469', 7.44]], data.values.tolist())
+
+        # 3. 清空缓存，补足数据从数据库中获取
+        sq.cache.reset_day_cache()
+        data = sq.get_day(['000001', '600469'], date='2017-11-01', backs=2, fields='close')
+        self.assertTrue(isinstance(data, pd.DataFrame))
+        self.assertEqual(6, len(data))
+        self.assertEqual(['2017-10-30',
+                          '2017-10-31',
+                          '2017-11-01',
+                          '2017-10-27',
+                          '2017-10-30',
+                          '2017-11-01'], data.index.strftime('%Y-%m-%d').tolist())
+        self.assertEqual([['000001', 11.56],
+                          ['000001', 11.54],
+                          ['000001', 11.4],
+                          ['600469', 8.11],
+                          ['600469', 7.98],
+                          ['600469', 7.44]], data.values.tolist())
+
 
 if __name__ == '__main__':
     if not sq.option.is_development_env():
+        sq.daily_updater.update_bundle('2017-10-27')
+        sq.daily_updater.update_bundle('2017-10-30')
         sq.daily_updater.update_bundle('2017-11-01')
         sq.daily_updater.update_bundle('2017-11-02')
-        sq.daily_updater.update_bundle('2017-11-03')
 
     unittest.main()

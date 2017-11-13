@@ -1,7 +1,8 @@
 # coding=utf-8
 
-import datetime
+import pandas as pd
 from ...option import option
+from ...utils.logger import logger
 from ...utils.exceptions import IllegalArgumentError
 from ...utils.datetime_utils import get_delta_trade_day
 from .db import db
@@ -26,6 +27,9 @@ class CachedDatabaseDay(object):
         pass
 
     def reset(self):
+        log = logger.get(__name__)
+        log.debug('reset daily data cache.')
+
         self.cached_df = None
 
         self.start_date = None
@@ -80,7 +84,37 @@ class CachedDatabaseDay(object):
         finally:
             self._lock_release()
 
-    def get_day(self, code_or_codes, start_date, end_date, backs, fields):
+    def _get_backs_from_cache(self, code, date, backs, fields):
+        """
+        从缓存中获取 date 日往前 backs 个数据，同时检查 date 日是否有数据
+        :param code:
+        :param date:
+        :param backs:
+        :param fields:
+        :return: (df, exists, full)
+            exists: True/False, 表示 date 日是否有数据
+            full: True/False, 表示 date 日是否有数据
+        """
+        self._lock_acquire()
+        try:
+            df = self.cached_df
+            df = df.loc[df.code == code]  # 先按照股票代码过滤剩下该股票的所有数据
+            try:
+                i = df.index.get_indexer_for(df.loc[df.index == date].index)[0]  # 得到 date 这一天的行号
+            except IndexError:
+                return None, False, False  # 这一天没有数据
+
+            if i == -1 or i < backs:
+                return None, True, False  # 数据不够直接返回 None
+
+            df = df.iloc[i - backs:i + 1][fields]
+
+            return df, True, df is not None and len(df) == backs + 1
+
+        finally:
+            self._lock_release()
+
+    def get_day(self, code_or_codes, start_date, end_date, backs, drop_suspended, fields):
         """
         得到股票日线数据
 
@@ -97,6 +131,9 @@ class CachedDatabaseDay(object):
         backs : int
             保证所有数据从结束日期往前有 n 条记录，以便用来画图等
             start_date 和 backs 同时出现时忽略 start_date 参数
+        drop_suspended : bool
+            是否直接丢弃中间有停牌的数据
+            和 backs 配套使用
         fields : str/str array
             单个字段名称或字段名称数组
 
@@ -122,15 +159,18 @@ class CachedDatabaseDay(object):
         if df is not None and len(df) > 0:
             # 先用索引做日期条件过滤
             if start_date is not None and end_date is not None:
+                start_date = pd.to_datetime(start_date)
+                end_date = pd.to_datetime(end_date)
                 df = df.truncate(before=start_date, after=end_date)
-                # df = df.loc[(df.index >= pd.to_datetime(start_date)) &
-                #            (df.index <= pd.to_datetime(end_date))]
+                # df = df.loc[(df.index >= start_date) & (df.index <= end_date)]
             elif start_date is not None:
+                start_date = pd.to_datetime(start_date)
                 df = df.truncate(before=start_date)
-                # df = df.loc[df.index >= pd.to_datetime(start_date)]
+                # df = df.loc[df.index >= start_date]
             elif end_date is not None:
+                end_date = pd.to_datetime(end_date)
                 df = df.truncate(after=end_date)
-                # df = df.loc[df.index <= pd.to_datetime(end_date)]
+                # df = df.loc[df.index <= end_date]
 
             # 然后在这基础上再做其他条件过滤
             if code_or_codes is not None:
@@ -141,10 +181,43 @@ class CachedDatabaseDay(object):
 
             if backs > 0:
                 # 检查数据是否满足要求
-                print(df)
-                import pandas as pd
-                d = pd.DataFrame()
-                #print(d.groupby('code').count())
+                counts = df.groupby('code').size()
+                counts = counts[counts.map(lambda x: x < backs + 1)]
+                if len(counts) > 0:
+                    # 对数据不足的部分单独处理，这部分数据不会很多
+
+                    # 1. 从数据集中去掉这些股票的数据
+                    df = df[~df.code.isin(counts.index)]
+
+                    if not drop_suspended:
+                        # 2. 需要从缓存或数据库中获取中间有停牌的数据
+                        new_data = [df]
+                        for code in counts.index:
+                            # 首先尝试从缓存中直接获得
+                            df_tmp, exists, full = self._get_backs_from_cache(code, end_date, backs, fields)
+                            if exists:
+                                # 这一天有数据
+                                if full:
+                                    # 缓存中的数据已经足够
+                                    new_data.append(df_tmp)
+                                else:
+                                    # 缓存中的前置数据不够，需要从数据库中临时获取
+                                    df_tmp = db.get_day_backs(code, end_date, backs, fields)
+                                    if df_tmp is not None and len(df_tmp) == backs + 1:
+                                        new_data.append(df_tmp)
+                            else:
+                                # 这一天没数据，忽略该股票
+                                pass
+                            del df_tmp
+
+                        del counts
+
+                        if len(new_data) > 1:  # 将重新获取的数据合并到数据集中
+                            df = pd.concat(new_data, copy=False)
+                            del new_data
+
+                            # 需要重新按照日期排序
+                            # df.sort_index(inplace=True)
 
         return df
 

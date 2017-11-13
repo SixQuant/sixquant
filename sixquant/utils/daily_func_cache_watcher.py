@@ -36,18 +36,18 @@ class DailyFuncCacheWatcher(object):
             while True:
                 if datetime.datetime.now() >= next_run_time:
                     next_run_time = next_run_time + datetime.timedelta(days=1)
-                    self._clear_func_lru_cache()
+                    self.reset()
                 time.sleep(1)
         except SystemExit:
             pass
 
-    def _clear_func_lru_cache(self):
+    def reset(self):
         """
-        清理函数缓存
+        清理日化函数缓存
         :return:
         """
         log = logger.get(__name__)
-        log.debug('daily clear func lru cache.')
+        log.debug('reset daily func cache.')
 
         for (k, func) in self._lru_cache_func_dict.items():
             if hasattr(func, 'cache_clear'):

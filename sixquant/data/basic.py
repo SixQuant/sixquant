@@ -110,6 +110,8 @@ def get_stocks(small_only=False, st_only=False, subnew_only=False, no_st=False, 
     :return:
     """
     df = get_basics()
+    if df is None:
+        return []
 
     if small_only:
         df = df[df.circulation_cap <= THRESHOLD_SMALL_CAP / 10000 / 10000]
