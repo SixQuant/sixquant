@@ -16,6 +16,8 @@ class TestMethods(unittest.TestCase):
         option.set_data_path(path)
         self.assertEqual(path, option.get_data_path())
 
+        option.is_development_env()
+
 
 if __name__ == '__main__':
     unittest.main()

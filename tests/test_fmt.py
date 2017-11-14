@@ -1,7 +1,8 @@
 # coding=utf-8
 
 import unittest
-from sixquant import fmt_round_number, fmt_file_size
+
+from sixquant import fmt_round_number, fmt_file_size, fmt_money, fmt_numpy_datetime64
 
 
 class TestMethods(unittest.TestCase):
@@ -24,6 +25,28 @@ class TestMethods(unittest.TestCase):
         self.assertEqual('1P', fmt_file_size(1024 ** 5))
         self.assertEqual('45K', fmt_file_size(1024 * 45))
         self.assertEqual('2.9T', fmt_file_size(1024 ** 4 * 2.9))
+
+    def test_fmt_money(self):
+        """Test :func:`fmt_money()`."""
+        self.assertEqual('', fmt_money(None))
+        self.assertEqual('1', fmt_money(1))
+        self.assertEqual('1000', fmt_money(1000))
+        self.assertEqual('1万', fmt_money(10000))
+        self.assertEqual('1百万', fmt_money(100 * 10000))
+        self.assertEqual('1千万', fmt_money(1000 * 10000))
+        self.assertEqual('1亿', fmt_money(10000 * 10000))
+
+        self.assertEqual('1.23万', fmt_money(12340))
+        self.assertEqual('1.23百万', fmt_money(123.4 * 10000))
+        self.assertEqual('1.23千万', fmt_money(1234 * 10000))
+        self.assertEqual('1.23亿', fmt_money(12340 * 10000))
+
+    def test_fmt_numpy_datetime64(self):
+        """Test :func:`fmt_numpy_datetime64()`."""
+        self.assertEqual('', fmt_numpy_datetime64(None, '%Y-%m-%d %H:%M:%S'))
+        import numpy as np
+        x = np.datetime64('2002-06-28 08:00:00.000000000')
+        self.assertEqual('2002-06-28 16:00:00', fmt_numpy_datetime64(x, '%Y-%m-%d %H:%M:%S'))
 
 
 if __name__ == '__main__':

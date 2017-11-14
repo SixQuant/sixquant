@@ -56,23 +56,33 @@ def fmt_money(money):
     :param money:
     :return:
     """
+    if money is None:
+        return ''
+
     x = money if money >= 0 else -money
-    if x > 10000 * 10000:
-        return '%.02f亿' % (money / (10000 * 10000))
-    if x > 1000 * 10000:
-        return '%.0f千万' % (money / (1000 * 10000))
-    if x > 100 * 10000:
-        return '%.0f百万' % (money / (100 * 10000))
-    if x > 10000:
-        return '%.02f万' % (money / (10000))
+
+    if x >= 10000 * 10000:
+        return fmt_round_number(money / (10000 * 10000)) + '亿'
+
+    if x >= 1000 * 10000:
+        return fmt_round_number(money / (1000 * 10000)) + '千万'
+
+    if x >= 100 * 10000:
+        return fmt_round_number(money / (100 * 10000)) + '百万'
+
+    if x >= 10000:
+        return fmt_round_number(money / 10000) + '万'
     return str(money)
 
 
 def fmt_numpy_datetime64(t, fmt):
     """
-    转换并格式化numpy的日期兑现
+    转换并格式化numpy的日期对象
     :param t:
     :param fmt:
     :return:
     """
+    if t is None:
+        return ''
+
     return datetime.datetime.fromtimestamp(t.astype('O') / 1e9).strftime(fmt)

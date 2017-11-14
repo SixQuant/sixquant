@@ -28,7 +28,7 @@ class CachedDatabaseDay(object):
 
     def reset(self):
         log = logger.get(__name__)
-        log.debug('reset daily data cache.')
+        log.debug('reset day cache.')
 
         self.cached_df = None
 

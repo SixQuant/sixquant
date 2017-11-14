@@ -46,7 +46,6 @@ class TestMethods(unittest.TestCase):
             columns=['code', 'factor'])
         df.index = pd.to_datetime(df.index)
         factor = get_relevant_factor(df[['code', 'factor']])
-        print(type(factor))
         self.assertTrue(isinstance(factor, np.ndarray))
         self.assertEqual(6, len(factor))
         self.assertEqual([115.716, 115.716, 115.716, 2.637, 2.637, 2.637], factor.tolist())
