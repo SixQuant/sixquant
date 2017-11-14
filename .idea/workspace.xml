@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e8216d9-63a8-49a1-bf38-f7d1bf5a7e44" name="Default" comment="- fixed get_day() factor error&#10;- get_day() add backs parameter to support pt_price filed&#10;- improved unit tests">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/data/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/test_cache.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/utils/__init__.py" />
+    <list default="true" id="5e8216d9-63a8-49a1-bf38-f7d1bf5a7e44" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/reference/Quant-Platform.md" afterPath="$PROJECT_DIR$/docs/reference/Quant-Platform.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/data/database/cached_db_day.py" afterPath="$PROJECT_DIR$/sixquant/data/database/cached_db_day.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/utils/fmt.py" afterPath="$PROJECT_DIR$/sixquant/utils/fmt.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_fmt.py" afterPath="$PROJECT_DIR$/tests/test_fmt.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_option.py" afterPath="$PROJECT_DIR$/tests/test_option.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/utils/test_ds_utils.py" afterPath="$PROJECT_DIR$/tests/utils/test_ds_utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/utils/test_factor_utils.py" afterPath="$PROJECT_DIR$/tests/utils/test_factor_utils.py" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -686,7 +676,14 @@
       <option name="project" value="LOCAL" />
       <updated>1510646385544</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="- improved unit tests">
+      <created>1510651436174</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1510651436174</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -771,7 +768,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- fixed get_day() factor error&#10;- get_day() add backs parameter to support pt_price filed&#10;- improved unit tests" />
     <MESSAGE value="- get_day support dynamic field: prev_close, pt_close, task #8" />
-    <option name="LAST_COMMIT_MESSAGE" value="- get_day support dynamic field: prev_close, pt_close, task #8" />
+    <MESSAGE value="- improved unit tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="- improved unit tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
