@@ -154,6 +154,41 @@ class TestMethods(unittest.TestCase):
                           ['600469', 7.98],
                           ['600469', 7.44]], data.values.tolist())
 
+    def test_get_day_filed_name_translate(self):
+        self.assertEqual(11.4, sq.get_day('000001', date='2017-11-01', fields='close'))
+
+        self.assertEqual(11.54, sq.get_day('000001', date='2017-11-01', fields='prev_close'))
+        self.assertEqual(11.54, sq.get_day('000001', date='2017-11-01', fields='prev_price'))
+
+        self.assertEqual(-1.21, sq.get_day('000001', date='2017-11-01', fields='pt_close'))
+        self.assertEqual(-1.21, sq.get_day('000001', date='2017-11-01', fields='pt_price'))
+
+        self.assertEqual(792881043.0, sq.get_day('000001', date='2017-11-01', fields='money'))
+        self.assertEqual(792881043.0, sq.get_day('000001', date='2017-11-01', fields='amount'))
+
+    def test_get_day_dynamic_filed(self):
+        # 昨日收盘价
+        data = sq.get_day('000001', date='2017-11-01', fields='prev_price')
+        self.assertEqual(11.54, data)
+
+        # 涨幅
+        data = sq.get_day('000001', date='2017-11-01', fields='pt_price')
+        self.assertEqual(-1.21, data)
+
+        data = sq.get_day('000001', date='2017-11-01', fields=['prev_price', 'close'])
+        self.assertTrue(isinstance(data, pd.Series))
+        self.assertEqual(2, len(data))
+        self.assertEqual({'prev_price': 11.54, 'close': 11.4}, data.to_dict())
+
+        # 震幅
+        data = sq.get_day('000001', date='2017-11-01', fields='pt_ampl')
+        self.assertEqual(2.34, data)
+
+        data = sq.get_day('000001', date='2017-11-01', fields=['close', 'pt_ampl'])
+        self.assertTrue(isinstance(data, pd.Series))
+        self.assertEqual(2, len(data))
+        self.assertEqual({'close': 11.4, 'pt_ampl': 2.34}, data.to_dict())
+
 
 if __name__ == '__main__':
     if not sq.option.is_development_env():

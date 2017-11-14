@@ -3,7 +3,9 @@
 
 """字段名称映射"""
 _FIELD_NAME_MAP = [
+    ['price', 'close'],
     ['pt_price', 'pt_close'],
+    ['prev_price', 'prev_close'],
     ['money', 'amount']
 ]
 

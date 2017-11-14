@@ -186,8 +186,29 @@ def get_day(code_or_codes,
 
     fetch_fields = append_if_not_exists(fetch_fields, fields)
 
-    if 'pt_close' in fields:
-        backs = 1 if backs < 1 else backs  # 需要前一天的数据
+    # 动态计算字段处理
+
+    dynamic_filed = False  # 是否有动态字段
+    temp_fields = []
+    drop_rows = 0  # 处理完毕后需要删除的临时数据行数
+
+    prev_close_based_dynamic_fields = ['prev_close', 'pt_close', 'pt_ampl']  # 需要 close 字段的动态字段
+    for label in prev_close_based_dynamic_fields:
+        if label in fetch_fields:
+            dynamic_filed = True
+            if 'close' not in fields and 'close' not in temp_fields:
+                temp_fields.append('close')  # 临时需要 close 字段数据
+            if 'pt_ampl' == label:  # 临时需要 high、low 字段数据
+                if 'high' not in fields and 'high' not in temp_fields:
+                    temp_fields.append('high')
+                if 'low' not in fields and 'low' not in temp_fields:
+                    temp_fields.append('low')
+            drop_rows = 1 if drop_rows < 1 else drop_rows
+            backs = 1 if backs < 1 else backs  # 需要前一天的数据
+            del fetch_fields[fetch_fields.index(label)]
+
+    if len(temp_fields) > 0:
+        fetch_fields = append_if_not_exists(fetch_fields, temp_fields)
 
     # 获取原始数据 Pandas MultiIndex DataFrame(code,date)
     code_or_codes = translate_stock_code(code_or_codes)
@@ -214,23 +235,44 @@ def get_day(code_or_codes,
 
             columns = fields
             for label in columns:
+                # 保留两位小数，需不需要四舍五入？
                 if label in ['open', 'high', 'low', 'close']:
                     # 利用复权系数调整所有价格相关数据
-                    df_copy[label] = df[label] / factor  # 除权
-
-                    # 保留两位小数，需不需要四舍五入？
-                    df_copy[label] = df_copy[label].map('{:.2f}'.format).astype(float)
+                    df_copy[label] = (df[label] / factor).map('{:.2f}'.format).astype(float)  # 除权
                 else:
-                    df_copy[label] = df[label]  # 其他字段直接复制
+                    if label in prev_close_based_dynamic_fields:  # 动态字段
+                        df_close = (df['close'] / factor).map('{:.2f}'.format).astype(float)
+                        df_prev_close = df_close.shift(1)
+
+                        if 'prev_close' == label:  # 涨幅
+                            df_copy[label] = df_prev_close
+                        elif 'pt_close' == label:  # 涨幅
+                            df_copy[label] = ((df_close / df_prev_close) * 100 - 100) \
+                                .map('{:.2f}'.format).astype(float)
+                        elif 'pt_ampl' == label:  # 震幅
+                            df_high = (df['high'] / factor).map('{:.2f}'.format).astype(float)
+                            df_low = (df['low'] / factor).map('{:.2f}'.format).astype(float)
+                            df_copy[label] = (((df_high - df_low) / df_prev_close) * 100) \
+                                .map('{:.2f}'.format).astype(float)
+                        del df_close
+                    else:
+                        df_copy[label] = df[label]  # 其他字段直接复制
             df = df_copy.drop('factor', axis=1)  # 对外隐藏 factor 列
             del df_copy
             del factor
         else:  # 不复权
             # 为了防止外面修改原始DataFrame数据，统一复制一次?
             # df = df.copy()
+            if dynamic_filed:
+                # FIXME 需要处理动态字段
+                pass
             pass
 
-    # 字段名称兼容转换
+        # 处理完毕后删除临时数据行
+        if drop_rows > 0:
+            df.drop(df.index[[0, drop_rows - 1]], inplace=True)
+
+    # 字段名称兼容转换（字段改名）
     if filed_name_changed and isinstance(df, pd.DataFrame):
         df.rename(columns=dict(zip(fields, original_fields)), inplace=True)
 
@@ -252,6 +294,7 @@ def get_day(code_or_codes,
                 df = df.iloc[:, 0]
 
     # 可以根据现有数据动态计算出来的字段
+    # prev_close
     # pt_close
     # pt_ampl,
     #
