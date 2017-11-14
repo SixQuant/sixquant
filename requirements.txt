@@ -1,4 +1,5 @@
-click
-requests
 numpy
 pandas
+click
+requests
+psutil
