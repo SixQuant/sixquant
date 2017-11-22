@@ -11,7 +11,8 @@ class TestMethods(unittest.TestCase):
         path = os.getenv("SIXQUANT_DATA_DIR")
         os.environ["SIXQUANT_DATA_DIR"] = ""
         self.assertTrue(Option().get_data_path().endswith('/.sixquant'))
-        os.environ["SIXQUANT_DATA_DIR"] = path
+        if path is not None:
+            os.environ["SIXQUANT_DATA_DIR"] = path
 
         path = option.get_data_path()
 

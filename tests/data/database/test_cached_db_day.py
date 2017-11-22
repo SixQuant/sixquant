@@ -8,8 +8,8 @@ from sixquant import option, daily_updater, cached_db_day, IllegalArgumentError
 class TestMethods(unittest.TestCase):
     def setUp(self):
         if not option.is_development_env():
-            daily_updater.update_bundle('2017-10-27')
             daily_updater.update_bundle('2017-10-30')
+            daily_updater.update_bundle('2017-10-31')
             daily_updater.update_bundle('2017-11-01')
             daily_updater.update_bundle('2017-11-02')
 
@@ -53,7 +53,7 @@ class TestMethods(unittest.TestCase):
         cached_db_day.get_day(code_or_codes='600469', start_date='2017-10-30', end_date='2017-11-01',
                               backs=0, drop_suspended=False, fields=['close'])
         data = cached_db_day.get_day(code_or_codes='600469', start_date=None, end_date='2017-10-31',
-                              backs=1, drop_suspended=False, fields=['close'])
+                                     backs=1, drop_suspended=False, fields=['close'])
         self.assertIsNotNone(data)
         # 更多测试见 test_day.py
 

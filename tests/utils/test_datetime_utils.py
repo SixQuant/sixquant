@@ -2,6 +2,9 @@
 
 import unittest
 import datetime
+
+import time
+
 from sixquant import to_date_object, to_date_str, to_date_str_short, is_trading_time, is_trading_day, \
     is_trading_day_today, is_trading_time_now, get_delta_trade_day, get_prev_trade_day, get_next_trade_day, \
     get_last_trading_day, to_time_object, get_last_histrade_day, is_holiday_today, is_holiday, to_datetime_str, \
@@ -46,7 +49,8 @@ class TestMethods(unittest.TestCase):
         self.assertEqual('2012-03-05 16:26:23', to_time_object('2012-03-05 16:26:23')
                          .strftime('%Y-%m-%d %H:%M:%S'))
 
-        self.assertEqual('2017-11-19 09:12:02', to_time_object('Sun, 19 Nov 2017 01:12:02 GMT')
+        date = to_datetime_str(to_time_object('2017-11-19 01:12:02') + datetime.timedelta(seconds=-time.timezone))
+        self.assertEqual(date, to_time_object('Sun, 19 Nov 2017 01:12:02 GMT')
                          .strftime('%Y-%m-%d %H:%M:%S'))
 
         import numpy as np
