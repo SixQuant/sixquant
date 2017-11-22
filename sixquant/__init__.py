@@ -8,7 +8,7 @@ from .utils.datetime_utils import *
 from .utils.dataframe_to_html import *
 from .utils.fmt import *
 
-from .profiler.time_profiler import *
+from .profiler.time_profiler import TimeProfiler
 from .profiler.memory_profiler import *
 
 from .option import option
@@ -21,5 +21,5 @@ from .data.day_today import *
 
 from .data.updater.daily_updater import daily_updater
 
-__version__ = '0.0.7'
+__version__ = '0.0.10'
 __author__ = 'caviler@gmail.com'

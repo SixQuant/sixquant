@@ -4,7 +4,7 @@ import datetime
 import threading
 import time
 
-from sixquant.utils.logger import logger
+from ..utils.logger import logger
 
 
 class DailyFuncCacheWatcher(object):

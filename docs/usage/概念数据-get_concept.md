@@ -5,7 +5,7 @@ get_concept* 函数用于股票概念数据
 ```
 import sixquant as sq
 
-concepts = get_concepts_no_black('002136')
+concepts = sq.get_concepts_no_black('002136')
 
 print(type(concepts))
 print(concepts)

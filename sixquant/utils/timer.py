@@ -1,7 +1,7 @@
 # coding=utf-8
 
-import datetime
 import time
+import datetime
 from .datetime_utils import is_trading_time_now
 from .stoppable_thread import StoppableThread
 

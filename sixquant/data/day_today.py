@@ -6,6 +6,7 @@ import pandas as pd
 from ..constants import TODAY_QUOTE_FILE, TODAY_MONEY_FILE, TODAY_FILE, TODAY_SMALL_FILE, \
     TODAY_SMALL_NO_ST_NO_SUBNEW_FILE
 from ..utils.dataframe_utils import request_dataframe
+from .basic import get_stocks
 
 
 def _request_day_today(url, fields=None, dropna=True):
@@ -68,7 +69,6 @@ def get_day_today(fields=None,
     else:
         df = _request_day_today(TODAY_FILE, fields=fields, dropna=dropna)
         if small_only or st_only or subnew_only or no_st or no_subnew:
-            from sixquant.data.basic import get_stocks
             stocks = get_stocks(small_only=small_only,
                                 st_only=st_only,
                                 subnew_only=subnew_only,

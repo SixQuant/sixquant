@@ -3,7 +3,7 @@
 import os
 import psutil
 
-from sixquant import fmt_file_size
+from ..utils.fmt import fmt_file_size
 
 
 def get_used_memory_size():

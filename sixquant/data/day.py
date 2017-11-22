@@ -2,7 +2,6 @@
 
 import pandas as pd
 
-from sixquant import option, to_date_str
 from ..utils.factor_utils import get_relevant_factor
 from ..utils.exceptions import IllegalArgumentError
 from ..utils.ds_utils import append_if_not_exists

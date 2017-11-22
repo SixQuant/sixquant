@@ -2,7 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e8216d9-63a8-49a1-bf38-f7d1bf5a7e44" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sixquant/data/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sixquant/data/database/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sixquant/data/updater/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sixquant/profiler/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sixquant/utils/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/usage/概念数据-get_concept.md" afterPath="$PROJECT_DIR$/docs/usage/概念数据-get_concept.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/__init__.py" afterPath="$PROJECT_DIR$/sixquant/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/data/concept.py" afterPath="$PROJECT_DIR$/sixquant/data/concept.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/data/day.py" afterPath="$PROJECT_DIR$/sixquant/data/day.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/data/day_today.py" afterPath="$PROJECT_DIR$/sixquant/data/day_today.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/profiler/memory_profiler.py" afterPath="$PROJECT_DIR$/sixquant/profiler/memory_profiler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/utils/daily_func_cache_watcher.py" afterPath="$PROJECT_DIR$/sixquant/utils/daily_func_cache_watcher.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/utils/fetcher.py" afterPath="$PROJECT_DIR$/sixquant/utils/fetcher.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/utils/timer.py" afterPath="$PROJECT_DIR$/sixquant/utils/timer.py" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,7 +98,7 @@
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_cached_db_day_TestMethods_test_get_day2.coverage" NAME="Unittests for test_cached_db_day.TestMethods.test_get_day2 Coverage Results" MODIFIED="1511358543628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data/database" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_in_test_utils_py.coverage" NAME="Unittests in test_utils.py Coverage Results" MODIFIED="1509702219962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_in_test_day2_py.coverage" NAME="Unittests in test_day2.py Coverage Results" MODIFIED="1511338567960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
-    <SUITE FILE_PATH="coverage/sixquant$Unittests_in_tests.coverage" NAME="Unittests in tests Coverage Results" MODIFIED="1511363132266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/sixquant$Unittests_in_tests.coverage" NAME="Unittests in tests Coverage Results" MODIFIED="1511364851344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/sixquant$field_name_translator.coverage" NAME="field_name_translator Coverage Results" MODIFIED="1510477957501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sixquant/utils" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_fmt_TestMethods_test_fmt_money.coverage" NAME="Unittests for test_fmt.TestMethods.test_fmt_money Coverage Results" MODIFIED="1511359813685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/utils" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_in_test_ds_utils_py.coverage" NAME="Unittests in test_ds_utils.py Coverage Results" MODIFIED="1510651092220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/utils" />
@@ -112,11 +127,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test_day.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test_day.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/data/test_day.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="333" column="0" lean-forward="true" selection-start-line="328" selection-start-column="0" selection-end-line="333" selection-end-column="0" />
+            <state relative-caret-position="180">
+              <caret line="12" column="42" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="42" />
               <folding>
                 <element signature="e#16#31#0" expanded="true" />
               </folding>
@@ -124,112 +139,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="day.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sixquant/data/day.py">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sixquant/utils/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="263" column="74" lean-forward="false" selection-start-line="263" selection-start-column="74" selection-end-line="263" selection-end-column="74" />
+            <state relative-caret-position="30">
+              <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_concept.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/data/test_concept.py">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sixquant/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="11" column="58" lean-forward="false" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="concept.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sixquant/data/concept.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="117" column="32" lean-forward="true" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="demo.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/demo/demo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cached_db_day.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sixquant/data/database/cached_db_day.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="177" column="8" lean-forward="true" selection-start-line="176" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
+            <state relative-caret-position="345">
+              <caret line="23" column="21" lean-forward="false" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
               <folding>
-                <element signature="e#15#31#0" expanded="true" />
+                <element signature="e#16#48#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="db.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sixquant/data/database/db.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="238" column="48" lean-forward="false" selection-start-line="238" selection-start-column="48" selection-end-line="238" selection-end-column="48" />
-              <folding>
-                <marker date="1511362833000" expanded="true" signature="951:1113" ph="CREATE TABLE... basic_name" />
-                <marker date="1511362833000" expanded="true" signature="1386:1872" ph="CREATE TABLE... day" />
-                <marker date="1511362833000" expanded="true" signature="2373:2400" ph="INSERT INTO basic_name... " />
-                <marker date="1511362833000" expanded="true" signature="2373:2406" ph="INSERT INTO basic_name... " />
-                <marker date="1511362833000" expanded="true" signature="2373:2424" ph="INSERT INTO basic_name... " />
-                <marker date="1511362833000" expanded="true" signature="2448:2476" ph="UPDATE basic... " />
-                <marker date="1511362833000" expanded="true" signature="2448:2500" ph="UPDATE basic... " />
-                <marker date="1511362833000" expanded="true" signature="3121:3148" ph="SELECT name basic_name" />
-                <marker date="1511362833000" expanded="true" signature="3121:3184" ph="SELECT name basic_name" />
-                <marker date="1511362833000" expanded="true" signature="3571:3634" ph="SELECT code basic_name" />
-                <marker date="1511362833000" expanded="true" signature="4016:4032" ph="INSERT INTO day... " />
-                <marker date="1511362833000" expanded="true" signature="4016:4036" ph="INSERT INTO day... " />
-                <marker date="1511362833000" expanded="true" signature="4016:4144" ph="INSERT INTO day... " />
-                <marker date="1511362833000" expanded="true" signature="4016:4177" ph="INSERT INTO day... " />
-                <marker date="1511362833000" expanded="true" signature="4016:4178" ph="INSERT INTO day... " />
-                <marker date="1511362833000" expanded="true" signature="4028:4031" ph="SELECT * FRO... day" />
-                <marker date="1511362833000" expanded="true" signature="5202:5219" ph="SELECT * FRO... day" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="case.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/unittest/case.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="600" column="0" lean-forward="false" selection-start-line="600" selection-start-column="0" selection-end-line="600" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".coveragerc" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.coveragerc">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.travis.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -265,7 +192,17 @@
       <find>start_date</find>
       <find>Starting</find>
       <find>backs</find>
+      <find>sixquant</find>
+      <find>sixquant.utils</find>
+      <find>from .utils.logger import logger</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/sixquant/data</dir>
+      <dir>$PROJECT_DIR$/sixquant</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -274,12 +211,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/sixquant/utils/exceptions.py" />
-        <option value="$PROJECT_DIR$/sixquant/utils/ds_utils.py" />
-        <option value="$PROJECT_DIR$/sixquant/cache.py" />
-        <option value="$PROJECT_DIR$/sixquant/utils/factor_utils.py" />
-        <option value="/Dummy.txt" />
-        <option value="$PROJECT_DIR$/sixquant/utils/field_name_translator.py" />
         <option value="$PROJECT_DIR$/tests/utils/test_field_name_translator.py" />
         <option value="$PROJECT_DIR$/tests/utils/test_factor_utils.py" />
         <option value="$PROJECT_DIR$/sixquant/utils/fmt.py" />
@@ -298,7 +229,6 @@
         <option value="$PROJECT_DIR$/tests/utils/test_stoppable_thread.py" />
         <option value="$PROJECT_DIR$/sixquant/utils/trading_timer.py" />
         <option value="$PROJECT_DIR$/sixquant/data/updater/daily_updater.py" />
-        <option value="$PROJECT_DIR$/sixquant/utils/timer.py" />
         <option value="$PROJECT_DIR$/tests/utils/test_timer.py" />
         <option value="$PROJECT_DIR$/tests/utils/test_fileutils.py" />
         <option value="$PROJECT_DIR$/tests/data/test_concept.py" />
@@ -307,7 +237,6 @@
         <option value="$PROJECT_DIR$/tests/utils/test_dataframe_to_html.py" />
         <option value="$PROJECT_DIR$/sixquant/utils/html_builder.py" />
         <option value="$PROJECT_DIR$/tests/utils/test_html_builder.py" />
-        <option value="$PROJECT_DIR$/sixquant/utils/daily_func_cache_watcher.py" />
         <option value="$PROJECT_DIR$/sixquant/utils/daily_cache.py" />
         <option value="$PROJECT_DIR$/tests/data/test_day2.py" />
         <option value="$PROJECT_DIR$/tests/data/updater/test_daily_updater.py" />
@@ -315,7 +244,6 @@
         <option value="$PROJECT_DIR$/tests/test_option.py" />
         <option value="$PROJECT_DIR$/tests/data/database/test_cached_db_day.py" />
         <option value="$PROJECT_DIR$/tests/utils/test_fmt.py" />
-        <option value="$PROJECT_DIR$/sixquant/__init__.py" />
         <option value="$PROJECT_DIR$/sixquant/utils/logger.py" />
         <option value="$PROJECT_DIR$/.coveragerc" />
         <option value="$PROJECT_DIR$/sixquant/utils/datetime_utils.py" />
@@ -323,8 +251,17 @@
         <option value="$PROJECT_DIR$/sixquant/data/database/cached_db_day.py" />
         <option value="$PROJECT_DIR$/sixquant/data/database/db.py" />
         <option value="$PROJECT_DIR$/tests/data/test_day.py" />
-        <option value="$PROJECT_DIR$/sixquant/data/day.py" />
         <option value="$PROJECT_DIR$/demo/demo.py" />
+        <option value="$PROJECT_DIR$/sixquant/data/day.py" />
+        <option value="$PROJECT_DIR$/sixquant/profiler/memory_profiler.py" />
+        <option value="$PROJECT_DIR$/sixquant/utils/fetcher.py" />
+        <option value="$PROJECT_DIR$/sixquant/data/concept.py" />
+        <option value="$PROJECT_DIR$/sixquant/data/day_today.py" />
+        <option value="$PROJECT_DIR$/sixquant/utils/timer.py" />
+        <option value="$PROJECT_DIR$/sixquant/utils/daily_func_cache_watcher.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/sixquant/utils/__init__.py" />
+        <option value="$PROJECT_DIR$/sixquant/__init__.py" />
       </list>
     </option>
   </component>
@@ -401,27 +338,45 @@
             <path>
               <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixquant" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixquant" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixquant" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="sixquant" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixquant" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="sixquant" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
               <item name="updater" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sixquant" type="462c0819:PsiDirectoryNode" />
+              <item name="sixquant" type="462c0819:PsiDirectoryNode" />
+              <item name="profiler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sixquant" type="462c0819:PsiDirectoryNode" />
+              <item name="sixquant" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sixquant" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sixquant" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
@@ -462,11 +417,11 @@
       <recent name="$PROJECT_DIR$/sixquant/data" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tests/data" />
-      <recent name="$PROJECT_DIR$/tests/data/database" />
-      <recent name="$PROJECT_DIR$/tests/utils" />
+      <recent name="$PROJECT_DIR$/sixquant/data/updater" />
+      <recent name="$PROJECT_DIR$/sixquant/data/database" />
+      <recent name="$PROJECT_DIR$/sixquant/data" />
+      <recent name="$PROJECT_DIR$/sixquant/profiler" />
       <recent name="$PROJECT_DIR$/sixquant/utils" />
-      <recent name="$PROJECT_DIR$/tests/profiler" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -481,7 +436,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.demo">
+  <component name="RunManager" selected="Python tests.Unittests in tests">
     <configuration name="Unittests for test_datetime_utils.TestMethods.test_get_trade_days" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -757,8 +712,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.demo" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
+        <item index="1" class="java.lang.String" itemvalue="Python.demo" />
         <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in test_day.py" />
         <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_day.TestMethods.test_get_day_dynamic_fields_complex" />
         <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_datetime_utils.TestMethods.test_get_trade_days" />
@@ -899,16 +854,17 @@
       <option name="project" value="LOCAL" />
       <updated>1511363320575</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add usage document">
+      <created>1511364010854</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1511364010854</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_day_TestMethods_test_get_day_dynamic_fields_complex - 2017.11.22 at 22h 55m 04s.xml">
-      <configuration name="Unittests for test_day.TestMethods.test_get_day_dynamic_fields_complex" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_day_TestMethods_test_get_day_dynamic_fields_complex - 2017.11.22 at 22h 59m 12s.xml">
-      <configuration name="Unittests for test_day.TestMethods.test_get_day_dynamic_fields_complex" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_for_test_day_TestMethods_test_get_day_dynamic_fields_complex - 2017.11.22 at 22h 59m 14s.xml">
       <configuration name="Unittests for test_day.TestMethods.test_get_day_dynamic_fields_complex" configurationId="tests" />
     </history-entry>
@@ -931,6 +887,12 @@
       <configuration name="Unittests in test_day.py" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittests_in_tests - 2017.11.22 at 23h 06m 02s.xml">
+      <configuration name="Unittests in tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_tests - 2017.11.22 at 23h 32m 34s.xml">
+      <configuration name="Unittests in tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_tests - 2017.11.22 at 23h 35m 02s.xml">
       <configuration name="Unittests in tests" configurationId="tests" />
     </history-entry>
   </component>
@@ -1026,116 +988,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/sixquant/data/basic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="112" column="33" lean-forward="false" selection-start-line="112" selection-start-column="33" selection-end-line="112" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/data/test_basic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/threading.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="677">
-          <caret line="861" column="12" lean-forward="true" selection-start-line="861" selection-start-column="12" selection-end-line="861" selection-end-column="12" />
-          <folding>
-            <element signature="e#67#85#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/utils/test_stoppable_thread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="59" lean-forward="false" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="59" />
-          <folding>
-            <element signature="e#16#31#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/utils/stoppable_thread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/utils/trading_timer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/utils/timer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="167" column="33" lean-forward="true" selection-start-line="167" selection-start-column="33" selection-end-line="167" selection-end-column="33" />
-          <folding>
-            <element signature="e#16#31#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/utils/test_timer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/utils/test_fileutils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/utils/dataframe_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="35" column="17" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/utils/test_dataframe_to_html.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="19" column="8" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/utils/test_html_builder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/utils/test_dataframe_util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1150,14 +1002,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
           <caret line="19" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/utils/daily_func_cache_watcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1304,22 +1148,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#16#48#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/data/updater/test_daily_updater.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
-            <element signature="e#16#31#0" expanded="true" />
+            <element signature="e#16#31#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1329,7 +1163,7 @@
         <state relative-caret-position="276">
           <caret line="64" column="23" lean-forward="false" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
           <folding>
-            <element signature="e#16#25#0" expanded="true" />
+            <element signature="e#16#25#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1347,16 +1181,6 @@
         <state relative-caret-position="-1333">
           <caret line="532" column="37" lean-forward="false" selection-start-line="532" selection-start-column="37" selection-end-line="532" selection-end-column="37" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/utils/logger.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="107" lean-forward="false" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="107" />
-          <folding>
-            <element signature="e#16#25#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1386,14 +1210,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/utils/datetime_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="385" column="23" lean-forward="false" selection-start-line="385" selection-start-column="23" selection-end-line="385" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/unittest/case.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -1404,7 +1220,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sixquant/data/database/db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
+        <state relative-caret-position="284">
           <caret line="238" column="48" lean-forward="false" selection-start-line="238" selection-start-column="48" selection-end-line="238" selection-end-column="48" />
           <folding>
             <marker date="1511362833000" expanded="true" signature="951:1113" ph="CREATE TABLE... basic_name" />
@@ -1431,26 +1247,10 @@
     <entry file="file://$PROJECT_DIR$/sixquant/data/database/cached_db_day.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="59">
-          <caret line="177" column="8" lean-forward="true" selection-start-line="176" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
+          <caret line="177" column="8" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
           <folding>
             <element signature="e#15#31#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/data/day.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="263" column="74" lean-forward="false" selection-start-line="263" selection-start-column="74" selection-end-line="263" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/data/concept.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="117" column="32" lean-forward="true" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1462,21 +1262,185 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/data/test_day.py">
+    <entry file="file://$PROJECT_DIR$/demo/demo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="333" column="0" lean-forward="true" selection-start-line="328" selection-start-column="0" selection-end-line="333" selection-end-column="0" />
+        <state relative-caret-position="285">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/profiler/memory_profiler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#16#25#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/data/day.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/utils/fetcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="15" lean-forward="false" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/data/concept.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/data/day_today.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="27" lean-forward="false" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding>
+            <element signature="e#16#34#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/utils/test_stoppable_thread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/profiler/time_profiler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="13" column="6" lean-forward="false" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/utils/timer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/utils/datetime_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/utils/daily_func_cache_watcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
           <folding>
             <element signature="e#16#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo/demo.py">
+    <entry file="file://$PROJECT_DIR$/sixquant/utils/logger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="135">
+          <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <folding>
+            <element signature="e#16#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/utils/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/profiler/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/data/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/data/database/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/data/updater/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/utils/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="21" lean-forward="false" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+          <folding>
+            <element signature="e#16#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/data/test_day.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="42" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="42" />
+          <folding>
+            <element signature="e#16#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

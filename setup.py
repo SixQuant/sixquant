@@ -6,7 +6,7 @@ setup(
         name='sixquant',
         version=sixquant.__version__,
         packages=find_packages(),
-        description='A quick data source for finance data',
+        description='A quick and stable data source for finance data.',
         author='caviler',
         author_email='caviler@gmail.com',
         license='BSD',

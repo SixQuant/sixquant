@@ -1,8 +1,8 @@
 # coding=utf-8
 
-from sixquant.utils.daily_cache import daily_cache
-from sixquant.utils.fetcher import fetcher
-from sixquant.constants import CONCEPTS_FILE
+from ..constants import CONCEPTS_FILE
+from ..utils.daily_cache import daily_cache
+from ..utils.fetcher import fetcher
 
 """
 股票概念信息
