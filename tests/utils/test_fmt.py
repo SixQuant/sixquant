@@ -1,8 +1,10 @@
 # coding=utf-8
-
+import datetime
 import unittest
 
-from sixquant import fmt_round_number, fmt_file_size, fmt_money, fmt_numpy_datetime64
+import time
+
+from sixquant import fmt_round_number, fmt_file_size, fmt_money, fmt_numpy_datetime64, to_datetime_str, to_time_object
 
 
 class TestMethods(unittest.TestCase):
@@ -46,7 +48,8 @@ class TestMethods(unittest.TestCase):
         self.assertEqual('', fmt_numpy_datetime64(None, '%Y-%m-%d %H:%M:%S'))
         import numpy as np
         x = np.datetime64('2002-06-28 08:00:00.000000000')
-        self.assertEqual('2002-06-28 16:00:00', fmt_numpy_datetime64(x, '%Y-%m-%d %H:%M:%S'))
+        date = to_datetime_str(to_time_object('2002-06-28 08:00:00') + datetime.timedelta(seconds=-time.timezone))
+        self.assertEqual(date, fmt_numpy_datetime64(x, '%Y-%m-%d %H:%M:%S'))
 
 
 if __name__ == '__main__':

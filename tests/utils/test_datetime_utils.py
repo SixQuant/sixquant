@@ -49,7 +49,6 @@ class TestMethods(unittest.TestCase):
         self.assertEqual('2012-03-05 16:26:23', to_time_object('2012-03-05 16:26:23')
                          .strftime('%Y-%m-%d %H:%M:%S'))
 
-        print('time.timezone', time.timezone)
         date = to_datetime_str(to_time_object('2017-11-19 01:12:02') + datetime.timedelta(seconds=-time.timezone))
         self.assertEqual(date, to_time_object('Sun, 19 Nov 2017 01:12:02 GMT')
                          .strftime('%Y-%m-%d %H:%M:%S'))
