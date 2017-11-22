@@ -14,18 +14,22 @@ class Database(object):
     数据库支持（SQLite3）
     """
 
-    def __init__(self):
+    def __init__(self, filename=option.get_data_filename('day.six')):
         self.con = None
-
-    def initialize(self):
-        filename = option.get_data_filename('day.six')
-        exists = os.path.exists(filename)
-        self.con = lite.connect(filename)
+        self.filename = filename
 
         atexit.register(self.close)
 
-        if not exists:
-            self.create_tables()
+    def initialize(self):
+        if self.con is None:
+            exists = os.path.exists(self.filename)
+            self.con = lite.connect(self.filename)
+
+            if not exists:
+                self.create_tables()
+
+    def get_filename(self):
+        return self.filename
 
     def close(self):
         if self.con is not None:
@@ -47,7 +51,7 @@ class Database(object):
         cur = self.con.cursor()
         cur.execute(sql)
 
-        sql = 'CREATE UNIQUE INDEX ix_basic_name_date_code ON day(date,code);'
+        sql = 'CREATE UNIQUE INDEX ix_basic_name_date_code ON basic_name(date,code);'
         cur.execute(sql)
 
         self.con.commit()
@@ -176,62 +180,21 @@ class Database(object):
 
         self.con.commit()
 
-    def get_day(self, code_or_codes, start_date=None, end_date=None, fields=None):
-        """
-        检索日线数据
-        :param code_or_codes:
-        :param start_date:
-        :param end_date:
-        :param fields:
-        :return:
-        """
-        if self.con is None:
-            self.initialize()
-
-        filter_code = isinstance(code_or_codes, str)
-
-        if fields is None:
-            sql = 'SELECT * FROM day'
-        else:
-            sql = 'SELECT date,factor,' + (','.join(fields)) + ' FROM day'
-
-        if start_date is not None and end_date is not None:
-            sql += ' WHERE date>=? and date<=? and code=?'
-            params = (start_date, end_date, code_or_codes,)
-        elif start_date is not None:
-            sql += ' WHERE date>=? and code=?'
-            params = (start_date, code_or_codes,)
-        elif end_date is not None:
-            sql += ' WHERE date<=? and code=?'
-            params = (end_date, code_or_codes,)
-        elif filter_code:
-            sql += ' WHERE code=?'
-            params = (code_or_codes,)
-        else:
-            params = None
-
-        sql += ' ORDER BY date'
-
-        df = pd.read_sql_query(sql, self.con, params=params, index_col='date')
-        df.index.name = None
-        df.index = pd.to_datetime(df.index)
-        return df
-
     def get_day_all(self, start_date=None, end_date=None, fields=None):
         """
         检索日线数据
         :param start_date:
         :param end_date:
         :param fields:
-        :return: Pandas MultiIndex DataFrame(code,date)
+        :return: Pandas DataFrame
         """
         if self.con is None:
             self.initialize()
 
-        if fields is None:
+        if fields is None or fields == '':
             sql = 'SELECT * FROM day'
         else:
-            sql = 'SELECT date,' + (','.join(fields)) + ' FROM day'
+            sql = 'SELECT ' + (','.join(fields)) + ',date FROM day'
 
         if start_date is not None and end_date is not None:
             sql += ' WHERE date>=? and date<=?'

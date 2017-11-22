@@ -24,22 +24,17 @@ class DailyFuncCacheWatcher(object):
         t.start()
 
     def _daemon_run(self):
-        """守护线程主函数
-        :return:
-        """
-        try:
-            # 每日 0 点清理函数调用缓存
-            next_run_time = datetime.datetime.strptime(
-                datetime.date.today().strftime('%Y-%m-%d') + ' ' + '00:00:01',
-                '%Y-%m-%d %H:%M:%S')
-            next_run_time = next_run_time + datetime.timedelta(days=1)
-            while True:
-                if datetime.datetime.now() >= next_run_time:
-                    next_run_time = next_run_time + datetime.timedelta(days=1)
-                    self.reset()
-                time.sleep(1)
-        except SystemExit:
-            pass
+        """守护线程主函数"""
+        # 每日 0 点清理函数调用缓存
+        next_run_time = datetime.datetime.strptime(
+            datetime.date.today().strftime('%Y-%m-%d') + ' ' + '00:00:01',
+            '%Y-%m-%d %H:%M:%S')
+        next_run_time = next_run_time + datetime.timedelta(days=1)
+        while True:
+            if datetime.datetime.now() >= next_run_time:
+                next_run_time = next_run_time + datetime.timedelta(days=1)
+                self.reset()
+            time.sleep(1)
 
     def reset(self):
         """

@@ -2,7 +2,7 @@
 
 import unittest
 from sixquant import get_stocks, get_stock_name, get_stock_pe, get_stock_circulation, get_stock_circulation_cap, \
-    get_launch_date
+    get_launch_date, daily_cache
 
 from sixquant import to_date_str
 from sixquant import translate_stock_code
@@ -22,6 +22,11 @@ class TestMethods(unittest.TestCase):
         self.assertTrue(get_stock_circulation_cap('000001') > 0)
 
     def test_get_get_stocks(self):
+        daily_cache.set('basics', [])
+        df = get_stocks()
+        self.assertEqual(0, len(df))
+        daily_cache.set('basics', None)
+
         self.assertIsNotNone(get_stocks())
         self.assertIsNotNone(get_stocks(small_only=True))
         self.assertIsNotNone(get_stocks(st_only=True))

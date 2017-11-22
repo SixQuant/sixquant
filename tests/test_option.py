@@ -2,11 +2,19 @@
 
 import unittest
 from sixquant import option
+from sixquant.option import Option
+import os
 
 
 class TestMethods(unittest.TestCase):
     def test_get_data_filename(self):
+        path = os.getenv("SIXQUANT_DATA_DIR")
+        os.environ["SIXQUANT_DATA_DIR"] = ""
+        self.assertTrue(Option().get_data_path().endswith('/.sixquant'))
+        os.environ["SIXQUANT_DATA_DIR"] = path
+
         path = option.get_data_path()
+
         option.set_data_path('./xyz')
         self.assertEqual('./xyz', option.get_data_path())
 

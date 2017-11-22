@@ -12,6 +12,72 @@ from .daily_func_cache_watcher import daily_func_cache_watcher
 from .fetcher import fetcher
 
 
+def to_date_object(date):
+    """
+    转换字符串或日期时间对象为日期对象（直接忽略时分秒部分）
+    :param date:
+    :return:
+    """
+    if date is None:
+        return None
+
+    if isinstance(date, datetime.datetime):
+        return date.date()
+
+    if isinstance(date, datetime.date):
+        return date
+
+    date = to_time_object(date)
+    date = date.date()
+
+    return date
+
+
+def to_time_object(dt):
+    """
+    转换字符串或日期时间对象为时间对象
+    :param dt:
+    :return:
+    """
+    if dt is None:
+        return None
+
+    adjust_time_zone = False
+
+    if isinstance(dt, str):
+        n = len(dt)
+        if 8 == n:
+            fmt = '%Y%m%d'
+        elif 10 == n:
+            pos = dt.find('/')
+            if -1 == pos:
+                fmt = '%Y-%m-%d' if 4 == dt.find('-') else '%m-%d-%Y'
+            elif 4 == pos:
+                fmt = '%Y/%m/%d'
+            else:
+                fmt = '%m/%d/%Y'
+        elif n > 4 and dt[n - 4:] == ' GMT':
+            fmt = '%a, %d %b %Y %H:%M:%S GMT'
+            adjust_time_zone = True  # 需要调整时区，一般 HTTP 请求头里用 GMT 时间表示
+        else:
+            fmt = '%Y-%m-%d %H:%M:%S'
+        dt = datetime.datetime.strptime(dt, fmt)
+
+        # 需要调整时区
+        if adjust_time_zone:
+            dt = dt + datetime.timedelta(seconds=-time.timezone)
+    elif isinstance(dt, np.datetime64):
+        dt = datetime.datetime.fromtimestamp(dt.astype('O') / 1e9)
+    elif isinstance(dt, datetime.datetime):
+        pass
+    elif isinstance(dt, datetime.date):
+        dt = datetime.datetime(dt.year, dt.month, dt.day)
+    else:
+        raise TypeError('date type error! ' + str(type(dt)))
+
+    return dt
+
+
 def to_date_str_fmt(date, fmt):
     """
     转换为日期字符串
@@ -42,105 +108,29 @@ def to_date_str_short(date):
     return to_date_str_fmt(date, '%Y%m%d')
 
 
+def to_datetime_str_fmt(dt, fmt):
+    """
+    转换为日期时间字符串
+    :param dt:
+    :param fmt:
+    :return:
+    """
+    if dt is None:
+        return ""
+
+    dt = to_time_object(dt)
+    return dt.strftime(fmt)
+
+
 def to_datetime_str(dt):
     """转换为日期字符串 %Y-%m-%d %H:%M:%S
     :param dt:
     :return:
     """
-    return to_date_str_fmt(dt, '%Y-%m-%d %H:%M:%S')
+    return to_datetime_str_fmt(dt, '%Y-%m-%d %H:%M:%S')
 
 
-def to_date_object(date, date_only=False):
-    """
-    转换对象为日期对象
-    :param date:
-    :param date_only: 是否只保留日期部分
-    :return:
-    """
-    if date is None:
-        return None
-
-    adjust_time_zone = False
-
-    if isinstance(date, str):
-        n = len(date)
-        if 8 == n:
-            fmt = '%Y%m%d'
-        elif 10 == n:
-            pos = date.find('/')
-            if -1 == pos:
-                fmt = '%Y-%m-%d' if 4 == date.find('-') else '%m-%d-%Y'
-            elif 4 == pos:
-                fmt = '%Y/%m/%d'
-            else:
-                fmt = '%m/%d/%Y'
-        elif n > 4 and date[n - 4:] == ' GMT':
-            fmt = '%a, %d %b %Y %H:%M:%S GMT'
-            adjust_time_zone = True  # 需要调整时区
-        else:
-            fmt = '%Y-%m-%d %H:%M:%S'
-        date = datetime.datetime.strptime(date, fmt)
-
-        # 需要调整时区
-        if adjust_time_zone:
-            date = date + datetime.timedelta(seconds=-time.timezone)
-
-    if isinstance(date, np.datetime64):
-        date = datetime.datetime.fromtimestamp(date.astype('O') / 1e9)
-
-    if not isinstance(date, datetime.date):
-        raise TypeError('date type error!' + str(date))
-
-    if date_only and isinstance(date, datetime.datetime):
-        date = date.date()
-
-    return date
-
-
-def to_time_object(dt):
-    """
-    转换对象为日期对象
-    :param dt:
-    :return:
-    """
-    if dt is None:
-        return None
-
-    adjust_time_zone = False
-
-    if isinstance(dt, str):
-        n = len(dt)
-        if 8 == n:
-            fmt = '%Y%m%d'
-        elif 10 == n:
-            pos = dt.find('/')
-            if -1 == pos:
-                fmt = '%Y-%m-%d' if 4 == dt.find('-') else '%m-%d-%Y'
-            elif 4 == pos:
-                fmt = '%Y/%m/%d'
-            else:
-                fmt = '%m/%d/%Y'
-        elif n > 4 and dt[n - 4:] == ' GMT':
-            fmt = '%a, %d %b %Y %H:%M:%S GMT'
-            adjust_time_zone = True  # 需要调整时区
-        else:
-            fmt = '%Y-%m-%d %H:%M:%S'
-        dt = datetime.datetime.strptime(dt, fmt)
-
-        # 需要调整时区
-        if adjust_time_zone:
-            dt = dt + datetime.timedelta(seconds=-time.timezone)
-
-    if isinstance(dt, np.datetime64):
-        dt = datetime.datetime.fromtimestamp(dt.astype('O') / 1e9)
-
-    if not isinstance(dt, datetime.date):
-        raise TypeError('date type error!' + str(dt))
-
-    return dt
-
-
-def is_holiday(date):
+def _is_holiday(date):
     """
     判断是否节假日
     """
@@ -152,16 +142,25 @@ def is_holiday(date):
             holidays = set()
             for line in data.split('\n'):
                 n = len(line)
-                if n > 0 and line[n - 1] == '\n':
-                    line = line[:n - 1]
-                    n -= 1
                 if n == 8:
                     holidays.add(int(line))
             daily_cache.set(key, holidays)
 
+    return date in holidays
+
+
+def is_holiday(date):
     date = to_date_object(date)
     date = date.year * 10000 + date.month * 100 + date.day
-    return date in holidays
+    return _is_holiday(date)
+
+
+def is_holiday_today():
+    """
+    判断今天是否是节假日
+    :return: bool
+    """
+    return is_holiday(datetime.date.today())
 
 
 def is_same_day(d1, d2):
@@ -191,6 +190,15 @@ def is_same_or_later_day(d1, d2):
     return d2 >= d1
 
 
+def is_leap_year(year):
+    """是否闰年"""
+    if (year % 4 == 0) & (year % 100 != 0):
+        return True
+    elif year % 400 == 0:
+        return True
+    return False
+
+
 def month_delta(date, months):
     """
     增减月数
@@ -212,17 +220,16 @@ def month_delta(date, months):
         if 0 == m:
             m = 12
 
-    date = datetime.datetime(y, m, date.day)
+    d = date.day
+
+    if m == 2:
+        if is_leap_year(y) and d > 29:
+            d = 29
+        elif d > 28:
+            d = 28
+
+    date = datetime.datetime(y, m, d)
     return date
-
-
-def is_holiday_today():
-    """
-    判断今天是否是节假日
-    :return: bool
-    """
-    today = datetime.date.today().strftime('%Y%m%d')
-    return is_holiday(today)
 
 
 @lru_cache(1024)  # 缓存耗时的函数调用
@@ -253,8 +260,8 @@ def is_trading_time(t):
     判断是否为交易时间以便非交易时间不需要抓取实时数据
     """
 
-    if option.debugging:
-        return True
+    if option.is_trading_time_now is not None:
+        return option.is_trading_time_now
 
     t = to_time_object(t)
 
@@ -264,18 +271,18 @@ def is_trading_time(t):
     hour = t.hour
     minute = t.minute
 
-    if hour == 9:  # 上午开盘
+    if hour == 9:
+        return minute >= 20  # 上午开盘
+    elif hour == 10:
         return True
-    if hour == 10:
+    elif hour == 11:
+        return minute < 31  # 上午收盘多加 1 分钟
+    elif hour == 13:  # 下午开盘
         return True
-    if hour == 11 and minute <= 35:  # 上午收盘多加 5 分钟
+    elif hour == 14:
         return True
-    if hour == 13:  # 下午开盘
-        return True
-    if hour == 14:
-        return True
-    if hour == 15 and minute <= 5:  # 下午收盘多加 5 分钟
-        return True
+    elif hour == 15:
+        return minute < 1  # 下午收盘多加 1 分钟
 
     return False
 
@@ -287,13 +294,18 @@ def is_trading_time_now():
     return is_trading_time(datetime.datetime.now())
 
 
-def get_last_trading_day():
+def get_last_trading_day(dt=None):
     """
     返回最近一个交易日
     :return: date
     """
-    date = datetime.date.today()
-    if datetime.datetime.now().hour <= 8:
+    if dt is None:
+        dt = datetime.datetime.now()
+    else:
+        dt = to_time_object(dt)
+
+    date = dt.date()
+    if dt.hour < 8:
         date = date + datetime.timedelta(days=-1)  # 8点前要往前一天
 
     while not is_trading_day(date):
@@ -302,17 +314,21 @@ def get_last_trading_day():
 
 
 @lru_cache(128)
-def get_last_histrade_day(days=0):
+def get_last_histrade_day(days=0, dt=None):
     """
     返回最近一个历史交易日
     :return:
     """
+    if dt is None:
+        dt = datetime.datetime.now()
+    else:
+        dt = to_time_object(dt)
 
     daily_func_cache_watcher.watch_lru_cache(get_last_histrade_day)
 
-    last_trading_day = get_last_trading_day()  # 最近的一个交易日
-    if is_same_day(datetime.date.today(), last_trading_day):
-        if datetime.datetime.now().hour <= 16:
+    last_trading_day = get_last_trading_day(dt)  # 最近的一个交易日
+    if is_same_day(dt, last_trading_day):
+        if dt.hour < 16:
             # 最后一个交易日时间，并且现在是16点前要往前一天，因为今天还不可能有数据
             days -= 1
 

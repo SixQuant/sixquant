@@ -3,7 +3,7 @@
 from .utils.logger import logger
 from .utils.fetcher import fetcher
 
-from .utils.timer import Timer
+from .utils.timer import RecycleTimer
 from .utils.datetime_utils import *
 from .utils.dataframe_to_html import *
 from .utils.fmt import *

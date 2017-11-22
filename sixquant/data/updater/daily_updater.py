@@ -9,9 +9,9 @@ import requests
 
 from ...option import option
 from ...constants import BUNDLE_SERVER_URL
-from ...utils.datetime_utils import get_last_trading_day, get_last_histrade_day, get_next_trade_day
+from ...utils.datetime_utils import get_last_trading_day, get_last_histrade_day, get_next_trade_day, to_time_object
 from ...utils.datetime_utils import to_date_object, to_date_str, is_trading_day
-from ...utils.trading_timer import RecycleTimer
+from ...utils.timer import RecycleTimer
 from ...utils.logger import logger
 from ...utils.fmt import fmt_file_size
 from ..database.db import db
@@ -35,7 +35,7 @@ class DailyUpdater(object):
         if start_date is None:
             date = get_last_histrade_day(-30 + 1)  # 默认同步前30个交易日数据
         else:
-            date = to_date_object(start_date, date_only=True)
+            date = to_date_object(start_date)
 
         date_end = get_last_trading_day()
 
@@ -51,10 +51,10 @@ class DailyUpdater(object):
         """
         更新指定交易日的最新的远程数据到本地
         :param date:
-        :return:
+        :return: exists, downloaded
         """
         if not is_trading_day(date):
-            return False
+            return False, False
 
         log = logger.get(__name__)
 
@@ -65,16 +65,16 @@ class DailyUpdater(object):
         r = requests.head(target)
         if 200 != r.status_code:
             log.warning('remote server missing bundle ' + target)
-            return False
+            return False, False
 
         total_length = int(r.headers.get('Content-Length'))
-        last_modified = to_date_object(r.headers.get('Last-Modified'))
+        last_modified = to_time_object(r.headers.get('Last-Modified'))
 
         local_file = option.get_data_filename('bundle', key)
         if os.path.exists(local_file):
             local_modified = os.path.getmtime(local_file)
             if local_modified == last_modified.timestamp():
-                return False  # 本地文件最后修改时间和远程一致
+                return True, False  # 本地文件最后修改时间和远程一致
 
         log.debug('downloading bundle data on ' + to_date_str(date) +
                   ', file size ' + fmt_file_size(total_length))
@@ -85,7 +85,7 @@ class DailyUpdater(object):
 
         r = requests.get(target, stream=True)
         if r.status_code != 200:
-            return False
+            return True, False
 
         out = open(local_file, 'wb')
         if total_length <= 8192 * 1024:
@@ -109,11 +109,11 @@ class DailyUpdater(object):
 
         db.put_day(df)
 
-        return True
+        return True, True
 
     def start(self):
         log = logger.get(__name__)
-        log.debug("staring data updater:")
+        log.debug("starting data updater:")
         log.debug("    local data path: " + option.get_data_path())
 
         """启动一个独立线程循环抓取数据"""

@@ -110,7 +110,7 @@ def get_stocks(small_only=False, st_only=False, subnew_only=False, no_st=False, 
     :return:
     """
     df = get_basics()
-    if df is None:
+    if df is None or len(df) == 0:
         return []
 
     if small_only:

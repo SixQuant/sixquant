@@ -1,10 +1,13 @@
 # coding=utf-8
+import threading
 
 import pandas as pd
+
 from ...option import option
 from ...utils.logger import logger
 from ...utils.exceptions import IllegalArgumentError
-from ...utils.datetime_utils import get_delta_trade_day
+from ...utils.datetime_utils import get_delta_trade_day, to_date_object, to_date_str
+from ...utils.ds_utils import append_if_not_exists
 from .db import db
 
 
@@ -19,12 +22,13 @@ class CachedDatabaseDay(object):
         self.start_date = None
         self.end_date = None
         self.fields = None
+        self._lock = threading.Lock()
 
     def _lock_acquire(self):
-        pass
+        self._lock.acquire()
 
     def _lock_release(self):
-        pass
+        self._lock.release()
 
     def reset(self):
         log = logger.get(__name__)
@@ -53,10 +57,11 @@ class CachedDatabaseDay(object):
                 self.end_date = end_date
 
                 self.fields = ['code', 'factor']
-                for x in fields:
-                    if x not in self.fields:
-                        reload = True
-                        self.fields.append(x)
+                if fields is not None:
+                    for x in fields:
+                        if x not in self.fields:
+                            reload = True
+                            self.fields.append(x)
             else:
                 if start_date < self.start_date:
                     reload = True
@@ -66,15 +71,18 @@ class CachedDatabaseDay(object):
                     reload = True
                     self.end_date = end_date
 
-                for x in fields:
-                    if x not in self.fields:
-                        reload = True
-                        self.fields.append(x)
+                if fields is not None:
+                    for x in fields:
+                        if x not in self.fields:
+                            reload = True
+                            self.fields.append(x)
 
             if reload:
-                self.cached_df = db.get_day_all(start_date=start_date, end_date=end_date, fields=self.fields)
+                self.cached_df = db.get_day_all(start_date=self.start_date, end_date=self.end_date, fields=self.fields)
 
             df = self.cached_df
+            if df is not None and fields is not None:
+                df = df[fields]
 
             if not option.enable_caching_day:
                 self.reset()
@@ -98,16 +106,17 @@ class CachedDatabaseDay(object):
         self._lock_acquire()
         try:
             df = self.cached_df
-            df = df.loc[df.code == code]  # 先按照股票代码过滤剩下该股票的所有数据
-            try:
-                i = df.index.get_indexer_for(df.loc[df.index == date].index)[0]  # 得到 date 这一天的行号
-            except IndexError:
-                return None, False, False  # 这一天没有数据
+            if df is not None:
+                df = df.loc[df.code == code]  # 先按照股票代码过滤剩下该股票的所有数据
+                try:
+                    i = df.index.get_indexer_for(df.loc[df.index == date].index)[0]  # 得到 date 这一天的行号
+                except IndexError:
+                    return None, False, False  # 这一天没有数据
 
-            if i == -1 or i < backs:
-                return None, True, False  # 数据不够直接返回 None
+                if i == -1 or i < backs:
+                    return None, True, False  # 数据不够直接返回 None
 
-            df = df.iloc[i - backs:i + 1][fields]
+                df = df.iloc[i - backs:i + 1][fields]
 
             return df, True, df is not None and len(df) == backs + 1
 
@@ -124,13 +133,10 @@ class CachedDatabaseDay(object):
             单个股票代码或股票代码数组
         start_date : date str/date
             数据开始日期
-            start_date 和 backs 同时出现时忽略 start_date 参数
         end_date : date str/date
             数据结束日期
-            和 backs 参数配套使用时表示取某一天以及前 backs 个数据
         backs : int
-            保证所有数据从结束日期往前有 n 条记录，以便用来画图等
-            start_date 和 backs 同时出现时忽略 start_date 参数
+            表示从 start_date 或 end_date 日期往前有 n 条记录，以便用来画图等
         drop_suspended : bool
             是否直接丢弃中间有停牌的数据
             和 backs 配套使用
@@ -145,32 +151,31 @@ class CachedDatabaseDay(object):
         -------
         Pandas DataFrame
         """
-        if start_date is None and backs < 1:
-            raise IllegalArgumentError('either start_date or backs must be defined!')
-
         if end_date is None:
             raise IllegalArgumentError('end_date is None!')
 
-        if backs > 0 and start_date is None:
-            start_date = get_delta_trade_day(end_date, -backs)  # 一般情况下(不包括停牌的数据)直接往前取 backs 个交易日的数据
+        if start_date is None and backs < 1:
+            raise IllegalArgumentError('either start_date or backs must be defined!')
+
+        end_date = to_date_object(end_date)
+
+        if start_date is not None:
+            start_date = to_date_object(start_date)
+
+        # 表示从 start_date 或 end_date 日期往前有 n 条记录，以便用来画图等
+        if backs > 0:
+            date = start_date if start_date is not None else end_date
+            start_date = get_delta_trade_day(date, -backs)
+            del date
 
         # 获取数据，已经按照日期排序
-        df = self._prepare(start_date=start_date, end_date=end_date, fields=fields)
+        fetch_fields = append_if_not_exists(['code'], fields)  # code 是必要字段，下面用于过滤
+        df = self._prepare(start_date=start_date, end_date=end_date, fields=fetch_fields)
         if df is not None and len(df) > 0:
             # 先用索引做日期条件过滤
-            if start_date is not None and end_date is not None:
-                start_date = pd.to_datetime(start_date)
-                end_date = pd.to_datetime(end_date)
-                df = df.truncate(before=start_date, after=end_date)
-                # df = df.loc[(df.index >= start_date) & (df.index <= end_date)]
-            elif start_date is not None:
-                start_date = pd.to_datetime(start_date)
-                df = df.truncate(before=start_date)
-                # df = df.loc[df.index >= start_date]
-            elif end_date is not None:
-                end_date = pd.to_datetime(end_date)
-                df = df.truncate(after=end_date)
-                # df = df.loc[df.index <= end_date]
+            start_date = pd.to_datetime(start_date)
+            end_date = pd.to_datetime(end_date)
+            df = df.truncate(before=start_date, after=end_date, copy=False)
 
             # 然后在这基础上再做其他条件过滤
             if code_or_codes is not None:
@@ -179,7 +184,19 @@ class CachedDatabaseDay(object):
                 else:
                     df = df.loc[df.code.isin(code_or_codes)]
 
-            if backs > 0:
+            if backs < 1:
+                if drop_suspended:
+                    # 检查数据是否满足要求
+                    counts = df.groupby('code').size()
+                    m = counts.max()
+                    if m != counts.min():
+                        counts = counts[counts.map(lambda x: x < m)]
+                        if len(counts) > 0:
+                            # 对数据不足的部分单独处理，这部分数据不会很多
+
+                            # 1. 从数据集中去掉这些股票的数据
+                            df = df[~df.code.isin(counts.index)]
+            else:
                 # 检查数据是否满足要求
                 counts = df.groupby('code').size()
                 counts = counts[counts.map(lambda x: x < backs + 1)]
@@ -204,6 +221,7 @@ class CachedDatabaseDay(object):
                                     # 缓存中的前置数据不够，需要从数据库中临时获取
                                     df_tmp = db.get_day_backs(code, end_date, backs, fields)
                                     if df_tmp is not None and len(df_tmp) == backs + 1:
+                                        df_tmp['code'] = code
                                         new_data.append(df_tmp)
                             else:
                                 # 这一天没数据，忽略该股票
@@ -218,6 +236,12 @@ class CachedDatabaseDay(object):
 
                             # 需要重新按照日期排序
                             # df.sort_index(inplace=True)
+
+            # 由于外面可能对数据进行修改，为了不影响原始数据，这里做一次 copy
+            if fields is not None and fields != '':
+                df = df[fields].copy()
+            else:
+                df = df.copy()
 
         return df
 

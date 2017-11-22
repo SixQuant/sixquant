@@ -1,5 +1,7 @@
 # coding=utf-8
 
+from .html_builder import html_get_pt_price_color
+
 _HTML_HEADER = """<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -74,28 +76,6 @@ _TABLE_FOOTER = """
 """
 
 
-def get_pt_price_color(pt_price):
-    if pt_price >= 8:
-        return 'bcr7'
-    if pt_price >= 5:
-        return 'bcr5'
-    if pt_price >= 3:
-        return 'bcr3'
-    if pt_price > 1:
-        return 'bcr1'
-
-    if pt_price <= -8:
-        return 'bcg7'
-    if pt_price <= -5:
-        return 'bcg5'
-    if pt_price <= -3:
-        return 'bcg3'
-    if pt_price <= -1:
-        return 'bcg1'
-
-    return 'bcr1'
-
-
 def dataframe_to_html(df, title, refresh=0):
     """
     将 DataFrame 输出成 html
@@ -123,7 +103,7 @@ def dataframe_to_html(df, title, refresh=0):
             except KeyError:
                 pt_price = 0
 
-        color = get_pt_price_color(pt_price)
+        color = html_get_pt_price_color(pt_price)
         html += '<tr>'
         html += '<td class="' + color + '">{value}</td>'.format(value=stock)
         for i in range(n):

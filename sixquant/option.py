@@ -8,12 +8,13 @@ class Option(object):
         if path is None:
             path = os.getenv("SIXQUANT_DATA_DIR")
             if path is None or "" == path:
-                path = './data'
+                path = os.path.abspath(os.path.expanduser('~/.sixquant'))
 
         self.env = 'development' if os.path.exists('../../sixquant.egg-info') else 'product'
 
         self._data_path = path
-        self.debugging = False  # 是否处于调试状态，让 is_trading_time 等函数直接返回 True
+        self.debugging = False  # 是否处于调试状态
+        self.is_trading_time_now = None  # 是否让 is_trading_time 函数直接返回 True
         self.verbose = False
 
         self.enable_caching_day = True  # 是否缓存日线数据
