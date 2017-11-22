@@ -12,6 +12,7 @@ class TestMethods(unittest.TestCase):
         if not sq.option.is_development_env():
             sq.daily_updater.update_bundle('2017-10-27')
             sq.daily_updater.update_bundle('2017-10-30')
+            sq.daily_updater.update_bundle('2017-10-31')
             sq.daily_updater.update_bundle('2017-11-01')
             sq.daily_updater.update_bundle('2017-11-02')
 

@@ -2,47 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e8216d9-63a8-49a1-bf38-f7d1bf5a7e44" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sixquant/utils/html_builder.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/data/database/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/data/database/test_cached_db_day.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/data/database/test_db.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/data/updater/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/data/updater/test_daily_updater.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/profiler/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/profiler/test_memory_profiler.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/profiler/test_time_profiler.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/utils/test_dataframe_util.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/utils/test_html_builder.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/utils/test_stoppable_thread.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sixquant/utils/trading_state_machine.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sixquant/utils/trading_timer.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/tests/test_cache.py" afterPath="$PROJECT_DIR$/tests/utils/test_cache.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/tests/test_dataframe_to_html.py" afterPath="$PROJECT_DIR$/tests/utils/test_dataframe_to_html.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/tests/test_fileutils.py" afterPath="$PROJECT_DIR$/tests/utils/test_fileutils.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/tests/test_fmt.py" afterPath="$PROJECT_DIR$/tests/utils/test_fmt.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/tests/test_timer.py" afterPath="$PROJECT_DIR$/tests/utils/test_timer.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/tests/test_utils.py" afterPath="$PROJECT_DIR$/tests/utils/test_datetime_utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/C.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/C.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/demo.py" afterPath="$PROJECT_DIR$/demo/demo.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/__init__.py" afterPath="$PROJECT_DIR$/sixquant/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/data/basic.py" afterPath="$PROJECT_DIR$/sixquant/data/basic.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/data/database/cached_db_day.py" afterPath="$PROJECT_DIR$/sixquant/data/database/cached_db_day.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/data/database/db.py" afterPath="$PROJECT_DIR$/sixquant/data/database/db.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/data/day.py" afterPath="$PROJECT_DIR$/sixquant/data/day.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/data/updater/daily_updater.py" afterPath="$PROJECT_DIR$/sixquant/data/updater/daily_updater.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/option.py" afterPath="$PROJECT_DIR$/sixquant/option.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/utils/daily_cache.py" afterPath="$PROJECT_DIR$/sixquant/utils/daily_cache.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/utils/daily_func_cache_watcher.py" afterPath="$PROJECT_DIR$/sixquant/utils/daily_func_cache_watcher.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/utils/dataframe_to_html.py" afterPath="$PROJECT_DIR$/sixquant/utils/dataframe_to_html.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/utils/datetime_utils.py" afterPath="$PROJECT_DIR$/sixquant/utils/datetime_utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/utils/stoppable_thread.py" afterPath="$PROJECT_DIR$/sixquant/utils/stoppable_thread.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sixquant/utils/timer.py" afterPath="$PROJECT_DIR$/sixquant/utils/timer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/data/test_basic.py" afterPath="$PROJECT_DIR$/tests/data/test_basic.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/data/test_concept.py" afterPath="$PROJECT_DIR$/tests/data/test_concept.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/data/test_day.py" afterPath="$PROJECT_DIR$/tests/data/test_day.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_option.py" afterPath="$PROJECT_DIR$/tests/test_option.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/data/updater/test_daily_updater.py" afterPath="$PROJECT_DIR$/tests/data/updater/test_daily_updater.py" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,7 +19,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_day_TestMethods_test_get_day_base_fields.coverage" NAME="Unittests for test_day.TestMethods.test_get_day_base_fields Coverage Results" MODIFIED="1510581460309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_datetime_utils_TestMethods_test_to_time_object.coverage" NAME="Unittests for test_datetime_utils.TestMethods.test_to_time_object Coverage Results" MODIFIED="1511168304580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/utils" />
-    <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_day_TestMethods_test_get_day_dynamic_fields.coverage" NAME="Unittests for test_day.TestMethods.test_get_day_dynamic_fields Coverage Results" MODIFIED="1511261381679" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
+    <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_day_TestMethods_test_get_day_dynamic_fields.coverage" NAME="Unittests for test_day.TestMethods.test_get_day_dynamic_fields Coverage Results" MODIFIED="1511357226687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
     <SUITE FILE_PATH="coverage/sixquant$tests.coverage" NAME="tests Coverage Results" MODIFIED="1510650776923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_day_TestMethods_test_argument.coverage" NAME="Unittests for test_day.TestMethods.test_argument Coverage Results" MODIFIED="1511193413869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_datetime_utils_TestMethods_test_last_trading_day.coverage" NAME="Unittests for test_datetime_utils.TestMethods.test_last_trading_day Coverage Results" MODIFIED="1511099324273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/utils" />
@@ -81,7 +45,7 @@
     <SUITE FILE_PATH="coverage/quick$Unittests_for_test_utils_UtilsTestCase_test_to_date_str_short.coverage" NAME="Unittests for test_utils.UtilsTestCase.test_to_date_str_short Coverage Results" MODIFIED="1508522164672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_in_test_dataframe_to_html_py.coverage" NAME="Unittests in test_dataframe_to_html.py Coverage Results" MODIFIED="1511188344425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/utils" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_day2_TestMethods_test_get_day_heat.coverage" NAME="Unittests for test_day2.TestMethods.test_get_day_heat Coverage Results" MODIFIED="1511337543538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
-    <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_day_TestMethods_test_get_day_argument.coverage" NAME="Unittests for test_day.TestMethods.test_get_day_argument Coverage Results" MODIFIED="1511336396234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
+    <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_day_TestMethods_test_get_day_argument.coverage" NAME="Unittests for test_day.TestMethods.test_get_day_argument Coverage Results" MODIFIED="1511346149369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_day_TestMethods_test_get_day_empty.coverage" NAME="Unittests for test_day.TestMethods.test_get_day_empty Coverage Results" MODIFIED="1511253956148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_in_test_concept_py.coverage" NAME="Unittests in test_concept.py Coverage Results" MODIFIED="1511187084417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_datetime_utils_TestMethods.coverage" NAME="Unittests for test_datetime_utils.TestMethods Coverage Results" MODIFIED="1511099187678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/utils" />
@@ -91,12 +55,12 @@
     <SUITE FILE_PATH="coverage/quick$main.coverage" NAME="main Coverage Results" MODIFIED="1508521365281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/quick" />
     <SUITE FILE_PATH="coverage/foxquant$demo.coverage" NAME="demo Coverage Results" MODIFIED="1509109863710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_day_TestMethods_test_get_day.coverage" NAME="Unittests for test_day.TestMethods.test_get_day Coverage Results" MODIFIED="1510496663910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
-    <SUITE FILE_PATH="coverage/sixquant$Unittests_in_test_daily_updater_py.coverage" NAME="Unittests in test_daily_updater.py Coverage Results" MODIFIED="1511345452040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data/updater" />
+    <SUITE FILE_PATH="coverage/sixquant$Unittests_in_test_daily_updater_py.coverage" NAME="Unittests in test_daily_updater.py Coverage Results" MODIFIED="1511357441248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data/updater" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_day_TestMethods_test__get_relevant_factor.coverage" NAME="Unittests for test_day.TestMethods.test__get_relevant_factor Coverage Results" MODIFIED="1510561709119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_factor_utils_TestMethods_test_get_relevant_factor.coverage" NAME="Unittests for test_factor_utils.TestMethods.test_get_relevant_factor Coverage Results" MODIFIED="1510647169648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/utils" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_timer_TestMethods_test_recycle_timer.coverage" NAME="Unittests for test_timer.TestMethods.test_recycle_timer Coverage Results" MODIFIED="1511185635418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/utils" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_in_test_datetime_utils_py.coverage" NAME="Unittests in test_datetime_utils.py Coverage Results" MODIFIED="1511095296088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/utils" />
-    <SUITE FILE_PATH="coverage/sixquant$Unittests_in_test_day_py.coverage" NAME="Unittests in test_day.py Coverage Results" MODIFIED="1511342614089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
+    <SUITE FILE_PATH="coverage/sixquant$Unittests_in_test_day_py.coverage" NAME="Unittests in test_day.py Coverage Results" MODIFIED="1511357451240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_fileutils_TestMethods.coverage" NAME="Unittests for test_fileutils.TestMethods Coverage Results" MODIFIED="1511094601621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/utils" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_cached_db_day_TestMethods_test_get_day.coverage" NAME="Unittests for test_cached_db_day.TestMethods.test_get_day Coverage Results" MODIFIED="1511192193628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data/database" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_in_data.coverage" NAME="Unittests in data Coverage Results" MODIFIED="1511192450240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
@@ -122,7 +86,7 @@
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_cached_db_day_TestMethods_test_get_day2.coverage" NAME="Unittests for test_cached_db_day.TestMethods.test_get_day2 Coverage Results" MODIFIED="1511344927455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data/database" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_in_test_utils_py.coverage" NAME="Unittests in test_utils.py Coverage Results" MODIFIED="1509702219962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_in_test_day2_py.coverage" NAME="Unittests in test_day2.py Coverage Results" MODIFIED="1511338567960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
-    <SUITE FILE_PATH="coverage/sixquant$Unittests_in_tests.coverage" NAME="Unittests in tests Coverage Results" MODIFIED="1511343431953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/sixquant$Unittests_in_tests.coverage" NAME="Unittests in tests Coverage Results" MODIFIED="1511357459792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/sixquant$field_name_translator.coverage" NAME="field_name_translator Coverage Results" MODIFIED="1510477957501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sixquant/utils" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_in_test_ds_utils_py.coverage" NAME="Unittests in test_ds_utils.py Coverage Results" MODIFIED="1510651092220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/utils" />
     <SUITE FILE_PATH="coverage/quick$Unittests_for_test_utils_UtilsTestCase_test_to_date_object.coverage" NAME="Unittests for test_utils.UtilsTestCase.test_to_date_object Coverage Results" MODIFIED="1508521554382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
@@ -139,6 +103,7 @@
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_datetime_utils_TestMethods_test_month_delta.coverage" NAME="Unittests for test_datetime_utils.TestMethods.test_month_delta Coverage Results" MODIFIED="1511168026481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/utils" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_in_test_cached_db_day_py.coverage" NAME="Unittests in test_cached_db_day.py Coverage Results" MODIFIED="1511253298298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data/database" />
     <SUITE FILE_PATH="coverage/sixquant$demo.coverage" NAME="demo Coverage Results" MODIFIED="1511345503375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/sixquant$Unittests_for_data_test_day_TestMethods_test_get_day_dynamic_fields_complex.coverage" NAME="Unittests for data.test_day.TestMethods.test_get_day_dynamic_fields_complex Coverage Results" MODIFIED="1511357355859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_time_profiler_TestMethods_test_time_profiler.coverage" NAME="Unittests for test_time_profiler.TestMethods.test_time_profiler Coverage Results" MODIFIED="1510653941644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/profiler" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_daily_updater_TestMethods_test_update_bundle.coverage" NAME="Unittests for test_daily_updater.TestMethods.test_update_bundle Coverage Results" MODIFIED="1511173744929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data/updater" />
     <SUITE FILE_PATH="coverage/sixquant$Unittests_for_test_basic_TestMethods_test_get_get_stocks.coverage" NAME="Unittests for test_basic.TestMethods.test_get_get_stocks Coverage Results" MODIFIED="1511168532189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/data" />
@@ -151,8 +116,8 @@
       <file leaf-file-name="test_day.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/data/test_day.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="178" column="0" lean-forward="true" selection-start-line="177" selection-start-column="2" selection-end-line="178" selection-end-column="0" />
+            <state relative-caret-position="199">
+              <caret line="297" column="8" lean-forward="false" selection-start-line="297" selection-start-column="8" selection-end-line="297" selection-end-column="8" />
               <folding>
                 <element signature="e#16#31#0" expanded="true" />
               </folding>
@@ -160,17 +125,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_cached_db_day.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/data/database/test_cached_db_day.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="51" column="29" lean-forward="true" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_daily_updater.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test_daily_updater.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/data/updater/test_daily_updater.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
@@ -182,14 +137,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="demo.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/demo/demo.py">
+      <file leaf-file-name="day.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sixquant/data/day.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding>
-                <element signature="e#16#37#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="135">
+              <caret line="247" column="0" lean-forward="false" selection-start-line="247" selection-start-column="0" selection-end-line="247" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -197,8 +150,8 @@
       <file leaf-file-name="cached_db_day.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sixquant/data/database/cached_db_day.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="245" column="0" lean-forward="false" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
+            <state relative-caret-position="275">
+              <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
               <folding>
                 <element signature="e#15#31#0" expanded="true" />
               </folding>
@@ -206,11 +159,39 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="case.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/unittest/case.py">
+      <file leaf-file-name="db.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sixquant/data/database/db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="600" column="0" lean-forward="false" selection-start-line="600" selection-start-column="0" selection-end-line="600" selection-end-column="0" />
+            <state relative-caret-position="281">
+              <caret line="215" column="37" lean-forward="true" selection-start-line="215" selection-start-column="37" selection-end-line="215" selection-end-column="37" />
+              <folding>
+                <marker date="1511343427000" expanded="true" signature="951:1113" ph="CREATE TABLE... basic_name" />
+                <marker date="1511343427000" expanded="true" signature="1386:1872" ph="CREATE TABLE... day" />
+                <marker date="1511343427000" expanded="true" signature="2373:2400" ph="INSERT INTO basic_name... " />
+                <marker date="1511343427000" expanded="true" signature="2373:2406" ph="INSERT INTO basic_name... " />
+                <marker date="1511343427000" expanded="true" signature="2373:2424" ph="INSERT INTO basic_name... " />
+                <marker date="1511343427000" expanded="true" signature="2448:2476" ph="UPDATE basic... " />
+                <marker date="1511343427000" expanded="true" signature="2448:2500" ph="UPDATE basic... " />
+                <marker date="1511343427000" expanded="true" signature="3121:3148" ph="SELECT name basic_name" />
+                <marker date="1511343427000" expanded="true" signature="3121:3184" ph="SELECT name basic_name" />
+                <marker date="1511343427000" expanded="true" signature="3571:3634" ph="SELECT code basic_name" />
+                <marker date="1511343427000" expanded="true" signature="4016:4032" ph="INSERT INTO day... " />
+                <marker date="1511343427000" expanded="true" signature="4016:4036" ph="INSERT INTO day... " />
+                <marker date="1511343427000" expanded="true" signature="4016:4144" ph="INSERT INTO day... " />
+                <marker date="1511343427000" expanded="true" signature="4016:4177" ph="INSERT INTO day... " />
+                <marker date="1511343427000" expanded="true" signature="4016:4178" ph="INSERT INTO day... " />
+                <marker date="1511343427000" expanded="true" signature="4028:4031" ph="SELECT * FRO... day" />
+                <marker date="1511343427000" expanded="true" signature="5202:5219" ph="SELECT * FRO... day" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="option.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sixquant/option.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -248,6 +229,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -277,7 +259,6 @@
         <option value="$PROJECT_DIR$/tests/test_option.py" />
         <option value="$PROJECT_DIR$/sixquant/data/basic.py" />
         <option value="$PROJECT_DIR$/tests/data/test_basic.py" />
-        <option value="$PROJECT_DIR$/sixquant/__init__.py" />
         <option value="$PROJECT_DIR$/sixquant/utils/stoppable_thread.py" />
         <option value="$PROJECT_DIR$/tests/utils/test_stoppable_thread.py" />
         <option value="$PROJECT_DIR$/sixquant/utils/trading_timer.py" />
@@ -297,13 +278,14 @@
         <option value="$PROJECT_DIR$/sixquant/utils/daily_func_cache_watcher.py" />
         <option value="$PROJECT_DIR$/sixquant/utils/daily_cache.py" />
         <option value="$PROJECT_DIR$/tests/data/test_day2.py" />
-        <option value="$PROJECT_DIR$/sixquant/data/day.py" />
         <option value="$PROJECT_DIR$/sixquant/data/database/cached_db_day.py" />
         <option value="$PROJECT_DIR$/sixquant/data/database/db.py" />
-        <option value="$PROJECT_DIR$/tests/data/test_day.py" />
         <option value="$PROJECT_DIR$/tests/data/database/test_cached_db_day.py" />
-        <option value="$PROJECT_DIR$/tests/data/updater/test_daily_updater.py" />
         <option value="$PROJECT_DIR$/demo/demo.py" />
+        <option value="$PROJECT_DIR$/sixquant/__init__.py" />
+        <option value="$PROJECT_DIR$/sixquant/data/day.py" />
+        <option value="$PROJECT_DIR$/tests/data/test_day.py" />
+        <option value="$PROJECT_DIR$/tests/data/updater/test_daily_updater.py" />
       </list>
     </option>
   </component>
@@ -370,6 +352,11 @@
             <path>
               <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixquant" type="462c0819:PsiDirectoryNode" />
+              <item name="sixquant" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sixquant" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -377,13 +364,6 @@
               <item name="sixquant" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sixquant" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sixquant" type="b2602c69:ProjectViewProjectNode" />
@@ -404,7 +384,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.splitter.proportion" value="0.24681684" />
@@ -444,23 +424,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.demo">
-    <configuration name="Unittests for test_cached_db_day.TestMethods.test_get_day2" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Unittests in tests">
+    <configuration name="Unittests for data.test_day.TestMethods.test_get_day_dynamic_fields_complex" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/data/database" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="sixquant" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_cached_db_day.TestMethods.test_get_day2&quot;" />
+      <option name="_new_target" value="&quot;data.test_day.TestMethods.test_get_day_dynamic_fields_complex&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for test_day.TestMethods.test_get_day_heat" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_day.TestMethods.test_get_day_dynamic_fields" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -472,7 +452,7 @@
       <module name="sixquant" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_day.TestMethods.test_get_day_heat&quot;" />
+      <option name="_new_target" value="&quot;test_day.TestMethods.test_get_day_dynamic_fields&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <configuration name="Unittests in test_daily_updater.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -488,6 +468,21 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/data/updater/test_daily_updater.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
+    <configuration name="Unittests in test_day.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="sixquant" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/data/test_day.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
     <configuration name="Unittests in tests" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -693,38 +688,20 @@
       <option name="_new_target" value="&quot;&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
-    <configuration name="demo" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demo" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="sixquant" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo/demo.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for test_day.TestMethods.test_get_day_heat" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_cached_db_day.TestMethods.test_get_day2" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in test_daily_updater.py" />
-      <item index="4" class="java.lang.String" itemvalue="Python.demo" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in test_day.py" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for test_day.TestMethods.test_get_day_dynamic_fields" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for data.test_day.TestMethods.test_get_day_dynamic_fields_complex" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in test_daily_updater.py" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.demo" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in test_daily_updater.py" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_cached_db_day.TestMethods.test_get_day2" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_day.TestMethods.test_get_day_heat" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in test_day.py" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in test_daily_updater.py" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for data.test_day.TestMethods.test_get_day_dynamic_fields_complex" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_day.TestMethods.test_get_day_dynamic_fields" />
       </list>
     </recent_temporary>
   </component>
@@ -792,39 +769,46 @@
       <option name="project" value="LOCAL" />
       <updated>1510653541134</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fixed a lot of get_day bugs">
+      <created>1511345588153</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1511345588153</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_cached_db_day_TestMethods_test_get_day2 - 2017.11.22 at 17h 58m 43s.xml">
-      <configuration name="Unittests for test_cached_db_day.TestMethods.test_get_day2" configurationId="tests" />
+    <history-entry file="Unittests_for_data_test_day_TestMethods_test_get_day_dynamic_fields_complex - 2017.11.22 at 21h 29m 17s.xml">
+      <configuration name="Unittests for data.test_day.TestMethods.test_get_day_dynamic_fields_complex" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_cached_db_day_TestMethods_test_get_day2 - 2017.11.22 at 17h 58m 56s.xml">
-      <configuration name="Unittests for test_cached_db_day.TestMethods.test_get_day2" configurationId="tests" />
+    <history-entry file="Unittests_for_test_day_TestMethods_test_get_day_dynamic_fields - 2017.11.22 at 21h 22m 51s.xml">
+      <configuration name="Unittests for test_day.TestMethods.test_get_day_dynamic_fields" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_cached_db_day_TestMethods_test_get_day2 - 2017.11.22 at 17h 59m 56s.xml">
-      <configuration name="Unittests for test_cached_db_day.TestMethods.test_get_day2" configurationId="tests" />
+    <history-entry file="Unittests_for_test_day_TestMethods_test_get_day_dynamic_fields - 2017.11.22 at 21h 25m 36s.xml">
+      <configuration name="Unittests for test_day.TestMethods.test_get_day_dynamic_fields" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_cached_db_day_TestMethods_test_get_day2 - 2017.11.22 at 18h 01m 25s.xml">
-      <configuration name="Unittests for test_cached_db_day.TestMethods.test_get_day2" configurationId="tests" />
+    <history-entry file="Unittests_for_test_day_TestMethods_test_get_day_dynamic_fields - 2017.11.22 at 21h 26m 52s.xml">
+      <configuration name="Unittests for test_day.TestMethods.test_get_day_dynamic_fields" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_cached_db_day_TestMethods_test_get_day2 - 2017.11.22 at 18h 01m 47s.xml">
-      <configuration name="Unittests for test_cached_db_day.TestMethods.test_get_day2" configurationId="tests" />
+    <history-entry file="Unittests_for_test_day_TestMethods_test_get_day_dynamic_fields - 2017.11.22 at 21h 27m 08s.xml">
+      <configuration name="Unittests for test_day.TestMethods.test_get_day_dynamic_fields" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_cached_db_day_TestMethods_test_get_day2 - 2017.11.22 at 18h 02m 08s.xml">
-      <configuration name="Unittests for test_cached_db_day.TestMethods.test_get_day2" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_day_TestMethods_test_get_day_heat - 2017.11.22 at 17h 39m 49s.xml">
-      <configuration name="Unittests for test_day.TestMethods.test_get_day_heat" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_day_TestMethods_test_get_day_heat - 2017.11.22 at 17h 40m 04s.xml">
-      <configuration name="Unittests for test_day.TestMethods.test_get_day_heat" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_day_TestMethods_test_get_day_heat - 2017.11.22 at 17h 40m 20s.xml">
-      <configuration name="Unittests for test_day.TestMethods.test_get_day_heat" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_daily_updater_py - 2017.11.22 at 18h 10m 54s.xml">
+    <history-entry file="Unittests_in_test_daily_updater_py - 2017.11.22 at 21h 30m 42s.xml">
       <configuration name="Unittests in test_daily_updater.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_day_py - 2017.11.22 at 21h 29m 27s.xml">
+      <configuration name="Unittests in test_day.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_day_py - 2017.11.22 at 21h 30m 56s.xml">
+      <configuration name="Unittests in test_day.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_tests - 2017.11.22 at 21h 29m 02s.xml">
+      <configuration name="Unittests in tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_tests - 2017.11.22 at 21h 33m 01s.xml">
+      <configuration name="Unittests in tests" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -878,7 +862,8 @@
     <MESSAGE value="- fixed get_day() factor error&#10;- get_day() add backs parameter to support pt_price filed&#10;- improved unit tests" />
     <MESSAGE value="- get_day support dynamic field: prev_close, pt_close, task #8" />
     <MESSAGE value="- improved unit tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="- improved unit tests" />
+    <MESSAGE value="fixed a lot of get_day bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed a lot of get_day bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -894,14 +879,19 @@
           <option name="timeStamp" value="132" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/sixquant/data/database/cached_db_day.py</url>
-          <line>109</line>
-          <option name="timeStamp" value="182" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/data/database/test_cached_db_day.py</url>
           <line>54</line>
           <option name="timeStamp" value="183" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/sixquant/data/day.py</url>
+          <line>247</line>
+          <option name="timeStamp" value="186" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/sixquant/data/database/cached_db_day.py</url>
+          <line>80</line>
+          <option name="timeStamp" value="187" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -911,7 +901,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="184" />
+      <option name="time" value="188" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1030,22 +1020,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="501">
           <caret line="45" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/option.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -1188,16 +1162,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/data/updater/daily_updater.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding>
-            <element signature="e#16#25#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/unittest/loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -1270,18 +1234,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="600" column="0" lean-forward="false" selection-start-line="600" selection-start-column="0" selection-end-line="600" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/data/database/test_cached_db_day.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="51" column="29" lean-forward="true" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="e#16#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="20" lean-forward="false" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+          <folding>
+            <element signature="e#16#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/option.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sixquant/data/day.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
+        <state relative-caret-position="135">
           <caret line="247" column="0" lean-forward="false" selection-start-line="247" selection-start-column="0" selection-end-line="247" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sixquant/data/database/cached_db_day.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+          <folding>
+            <element signature="e#15#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sixquant/data/database/db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="191" column="29" lean-forward="false" selection-start-line="191" selection-start-column="29" selection-end-line="191" selection-end-column="29" />
+        <state relative-caret-position="281">
+          <caret line="215" column="37" lean-forward="true" selection-start-line="215" selection-start-column="37" selection-end-line="215" selection-end-column="37" />
           <folding>
             <marker date="1511343427000" expanded="true" signature="951:1113" ph="CREATE TABLE... basic_name" />
             <marker date="1511343427000" expanded="true" signature="1386:1872" ph="CREATE TABLE... day" />
@@ -1306,36 +1324,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/data/test_day.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="178" column="0" lean-forward="true" selection-start-line="177" selection-start-column="2" selection-end-line="178" selection-end-column="0" />
+        <state relative-caret-position="199">
+          <caret line="297" column="8" lean-forward="false" selection-start-line="297" selection-start-column="8" selection-end-line="297" selection-end-column="8" />
           <folding>
             <element signature="e#16#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/unittest/case.py">
+    <entry file="file://$PROJECT_DIR$/sixquant/data/updater/daily_updater.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="600" column="0" lean-forward="false" selection-start-line="600" selection-start-column="0" selection-end-line="600" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sixquant/data/database/cached_db_day.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="245" column="0" lean-forward="false" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
-          <folding>
-            <element signature="e#15#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/data/database/test_cached_db_day.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="51" column="29" lean-forward="true" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
+        <state relative-caret-position="221">
+          <caret line="29" column="3" lean-forward="false" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -1346,16 +1346,6 @@
           <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
             <element signature="e#16#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="e#16#37#0" expanded="true" />
           </folding>
         </state>
       </provider>

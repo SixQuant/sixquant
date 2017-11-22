@@ -7,9 +7,9 @@ from sixquant.data.updater.daily_updater import daily_updater
 
 
 class TestMethods(unittest.TestCase):
-    def test_update(self):
-        daily_updater.update(get_last_trading_day())
-        daily_updater.update()
+    #def test_update(self):
+    #    daily_updater.update(get_last_trading_day())
+    #    daily_updater.update()
 
     def test_update_bundle(self):
         exists, _ = daily_updater.update_bundle('2017-10-01')

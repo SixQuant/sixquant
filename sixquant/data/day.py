@@ -235,7 +235,6 @@ def get_day(code_or_codes,
                     temp_fields.append('low')
             del fetch_fields[fetch_fields.index(label)]
 
-    #start_date = end_date  # 默认取1个交易日
     fetch_start_date = start_date if start_date is not None else end_date
     if dynamic_filed:  # 需要前一天的数据
         backs = backs + 1
