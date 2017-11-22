@@ -54,8 +54,9 @@ class TestMethods(unittest.TestCase):
                          .strftime('%Y-%m-%d %H:%M:%S'))
 
         import numpy as np
-        x = np.datetime64('2012-06-28 08:00:00.000000000')
-        self.assertEqual('2012-06-28 16:00:00', to_time_object(x).strftime('%Y-%m-%d %H:%M:%S'))
+        x = np.datetime64('2002-06-28 08:00:00.000000000')
+        date = to_datetime_str(to_time_object('2002-06-28 08:00:00') + datetime.timedelta(seconds=-time.timezone))
+        self.assertEqual(date, to_time_object(x).strftime('%Y-%m-%d %H:%M:%S'))
 
         date = datetime.date(2012, 3, 5)
         self.assertEqual('2012-03-05 00:00:00', to_time_object(date).strftime('%Y-%m-%d %H:%M:%S'))
