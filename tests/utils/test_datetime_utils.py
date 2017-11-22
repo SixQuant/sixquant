@@ -8,7 +8,7 @@ import time
 from sixquant import to_date_object, to_date_str, to_date_str_short, is_trading_time, is_trading_day, \
     is_trading_day_today, is_trading_time_now, get_delta_trade_day, get_prev_trade_day, get_next_trade_day, \
     get_last_trading_day, to_time_object, get_last_histrade_day, is_holiday_today, is_holiday, to_datetime_str, \
-    month_delta, option, is_leap_year, is_same_day, is_same_or_later_day
+    month_delta, option, is_leap_year, is_same_day, is_same_or_later_day, get_trade_days
 
 
 class TestMethods(unittest.TestCase):
@@ -145,6 +145,12 @@ class TestMethods(unittest.TestCase):
 
         self.assertEqual('2017-09-28', to_date_str(get_delta_trade_day(date, -2)))
         self.assertEqual('2017-10-10', to_date_str(get_delta_trade_day(date, +2)))
+
+    def test_get_trade_days(self):
+        self.assertEqual(1, get_trade_days('2017-11-01', '2017-11-01'))
+        self.assertEqual(2, get_trade_days('2017-10-31', '2017-11-01'))
+
+        self.assertEqual(3, get_trade_days('2017-10-01', '2017-10-10'))
 
     def test_is_same_day(self):
         """Test :func:`is_same_day()`."""

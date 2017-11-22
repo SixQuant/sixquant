@@ -8,8 +8,5 @@ source =
 omit =
     /*/tests/*
 
-[report]
-include = sixquant/*
-
 [html]
 directory = htmlcov

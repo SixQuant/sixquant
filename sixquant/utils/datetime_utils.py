@@ -367,3 +367,22 @@ def get_prev_trade_day(date):
 def get_next_trade_day(date):
     """获取下一交易日"""
     return get_delta_trade_day(date, +1)
+
+
+def get_trade_days(start_date, end_date):
+    """
+    获得两个日期之间的交易天数
+    :param start_date:
+    :param end_date:
+    :return:
+    """
+    start_date = to_date_object(start_date)
+    end_date = to_date_object(end_date)
+
+    trade_days = 1
+    date = start_date
+    while date != end_date:
+        date = get_delta_trade_day(date, +1)
+        trade_days += 1
+
+    return trade_days

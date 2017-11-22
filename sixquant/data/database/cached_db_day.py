@@ -6,7 +6,7 @@ import pandas as pd
 from ...option import option
 from ...utils.logger import logger
 from ...utils.exceptions import IllegalArgumentError
-from ...utils.datetime_utils import get_delta_trade_day, to_date_object, to_date_str
+from ...utils.datetime_utils import get_delta_trade_day, to_date_object, get_trade_days
 from ...utils.ds_utils import append_if_not_exists
 from .db import db
 
@@ -166,6 +166,7 @@ class CachedDatabaseDay(object):
         if backs > 0:
             date = start_date if start_date is not None else end_date
             start_date = get_delta_trade_day(date, -backs)
+            backs = get_trade_days(start_date, end_date)  # 两个日期之间的交易天数
             del date
 
         # 获取数据，已经按照日期排序
@@ -199,7 +200,7 @@ class CachedDatabaseDay(object):
             else:
                 # 检查数据是否满足要求
                 counts = df.groupby('code').size()
-                counts = counts[counts.map(lambda x: x < backs + 1)]
+                counts = counts[counts.map(lambda x: x < backs)]
                 if len(counts) > 0:
                     # 对数据不足的部分单独处理，这部分数据不会很多
 
@@ -220,7 +221,7 @@ class CachedDatabaseDay(object):
                                 else:
                                     # 缓存中的前置数据不够，需要从数据库中临时获取
                                     df_tmp = db.get_day_backs(code, end_date, backs, fields)
-                                    if df_tmp is not None and len(df_tmp) == backs + 1:
+                                    if df_tmp is not None and len(df_tmp) == backs:
                                         df_tmp['code'] = code
                                         new_data.append(df_tmp)
                             else:

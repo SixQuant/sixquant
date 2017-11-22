@@ -238,7 +238,6 @@ def get_day(code_or_codes,
     fetch_start_date = start_date if start_date is not None else end_date
     if dynamic_filed:  # 需要前一天的数据
         backs = backs + 1
-    # fetch_start_date = get_prev_trade_day(fetch_start_date)
 
     if len(temp_fields) > 0:
         fetch_fields = append_if_not_exists(fetch_fields, temp_fields)
@@ -261,6 +260,11 @@ def get_day(code_or_codes,
     else:
         if dynamic_filed:  # 如果有动态字段，则需要昨日价格
             df = _calc_prev_close(df)
+
+            if start_date is not None: # 如果指定了开始日期，则为了取前一日数据有可能存在超出日期范围的数据
+                start_date = pd.to_datetime(start_date)
+                end_date = pd.to_datetime(end_date)
+                df = df.truncate(before=start_date, after=end_date, copy=False)
 
         if adjust_type == 'pre':  # 前复权
             # 除权处理

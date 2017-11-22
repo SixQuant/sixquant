@@ -236,7 +236,7 @@ class Database(object):
             self.initialize()
 
         sql = 'SELECT date,' + (','.join(fields)) + ' FROM day WHERE date<=? and code=? ORDER BY date DESC LIMIT ?'
-        params = (to_date_str(date), code, backs + 1,)
+        params = (to_date_str(date), code, backs,)
 
         df = pd.read_sql_query(sql, self.con, params=params)
         df.date = pd.to_datetime(df.date)

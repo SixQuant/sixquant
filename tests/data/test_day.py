@@ -10,6 +10,7 @@ from sixquant.data.day import _calc_prev_close
 class TestMethods(unittest.TestCase):
     def setUp(self):
         if not sq.option.is_development_env():
+            sq.daily_updater.update_bundle('2017-10-26')
             sq.daily_updater.update_bundle('2017-10-27')
             sq.daily_updater.update_bundle('2017-10-30')
             sq.daily_updater.update_bundle('2017-10-31')
